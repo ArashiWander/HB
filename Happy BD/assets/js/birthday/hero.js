@@ -113,6 +113,7 @@ function createStarfield(canvas) {
   start();
 
   return { start, stop };
+}
 
 function handleSecret(config) {
   const form = document.getElementById('bd-secret-form');
