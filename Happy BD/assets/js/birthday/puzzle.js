@@ -48,7 +48,7 @@ class PuzzleGame {
     });
     this.revealBtn?.addEventListener('click', () => {
       if (this.gallery) {
-        this.gallery.openImage(this.imageUrl, '拼图原图');
+        this.gallery.openImage(this.imageUrl, this.config.messages?.puzzleOriginal || '拼图原图');
       }
     });
     this.selectEl?.addEventListener('change', (event) => {
