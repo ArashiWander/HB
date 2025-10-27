@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>子茜的星河生日展 · Happy Orbit, Zixian</title>
+    <meta name="description" content="为子茜定制的一页式生日网页：相册银河、时间轴、扭蛋券、默契小测、拼图解锁、心愿气球、祝福烟花、宇宙承诺书" />
+    <meta name="theme-color" content="#0D1B2A" />
+    
+    <!-- Security: CSP -->
+    <!--
+    安全策略（CSP）说明：
+    - 如需播放外部音频，请将其域名加入 media-src（已允许 https: 与 data:）。
+    - 如需额外图片或 API 域，分别添加到 img-src / connect-src。
+    -->
+    <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self'; img-src 'self' https://images.unsplash.com data:; media-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'">
+    
+    <!-- SEO: Open Graph -->
+    <meta property="og:title" content="子茜的星河生日展 · Happy Orbit, Zixian" />
+    <meta property="og:description" content="相册银河、时间轴、扭蛋、拼图、烟花…专属互动生日网页" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1529336953121-a0ce99a0f007?w=1200&h=630&fit=crop" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi5a2Q6Iyc55qE5pif5rKz55Sf5pel5bGVIiwic2hvcnRfbmFtZSI6IuaYn+aymeeUn+aXpSIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsInRoZW1lX2NvbG9yIjoiIzBEMUIyQSIsImJhY2tncm91bmRfY29sb3IiOiIjMEQxQjJBIn0=" />
+    
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <style>
+        /* ===== 设计系统 ===== */
+        :root{
+            --bg-deep:#0D1B2A;      /* 暮靛 */
+            --bg-deeper:#08111d;
+            --ink:#E6E6FA;          /* 星辉 */
+            --rose:#EFB8C8;         /* 玫瑰金 */
+            --mint:#b7ffe1;
+            --accent:#8ec5ff;
+            --card:#12243b;
+            --muted:#9aa7b2;
+            --shadow:0 10px 30px rgba(0,0,0,.45);
+            --radius:16px;
+            --radius-lg:24px;
+            --glass:rgba(255,255,255,0.06);
+        }
+        *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1000px 600px at 70% -10%,#12243b 0%,#0D1B2A 40%,#08111d 100%);color:var(--ink);font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;scroll-behavior:smooth}
+        img{max-width:100%;display:block}
+        a{color:var(--mint);text-decoration:none}
+    h1,h2,h3{margin:0 0 .75rem 0; line-height:1.25}
+    p{margin:.5rem 0 1rem}
+    .container{width:min(1100px,92vw);margin:0 auto;padding:56px 0}
+    .section{padding:64px 0;border-top:1px solid rgba(255,255,255,.06)}
+        .card{background:linear-gradient(180deg,var(--glass),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:var(--radius);box-shadow:var(--shadow)}
+        .btn{appearance:none;border:none;border-radius:999px;background:linear-gradient(135deg,var(--rose),#ffd2df 60%,#fff1f6);color:#381a22;font-weight:700;padding:12px 20px;cursor:pointer;box-shadow:0 6px 18px rgba(239,184,200,.35);transition:transform .15s ease, box-shadow .15s ease}
+        .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(239,184,200,.5)}
+        .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.16);box-shadow:none}
+        .btn:focus-visible,.tag:focus-visible,.face[role="button"]:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+        .muted{color:var(--muted)}
+        .pill{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .7rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.85rem}
+        .grid{display:grid;gap:16px}
+        @media(min-width:800px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-4{grid-template-columns:repeat(4,1fr)}}
+
+        /* 首选减少动效 */
+        @media (prefers-reduced-motion: reduce){
+            html,body{scroll-behavior:auto}
+            *{animation:none!important;transition:none!important}
+        }
+
+        /* ===== 顶部导航 ===== */
+        .nav{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,rgba(8,17,29,.9),rgba(8,17,29,.6) 80%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06)}
+        .nav-inner{width:min(1024px,92vw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+        .nav a{padding:8px 10px;border-radius:8px;color:var(--ink)}
+        .nav a:hover{background:rgba(255,255,255,.06)}
+
+        /* ===== Hero 星河舞台 ===== */
+        #hero{position:relative;min-height:84vh;display:grid;place-items:center}
+        #starfield{position:fixed;inset:0;z-index:-1}
+        .hero-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:20px}
+        .title{font-size:clamp(28px,6vw,56px);letter-spacing:.02em}
+        .typing{min-height:1.8em;border-right:2px solid var(--rose);white-space:nowrap;overflow:hidden}
+        .hero-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+        .gate{display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 8px}
+        .gate input{all:unset;padding:6px 10px;min-width:12ch}
+
+        /* ===== 相册银河 ===== */
+        /* Masonry 列保持不变 */
+        .gallery{columns:2 260px;column-gap:14px}
+
+        /* 关键：给 figure 一个固有高度占位，防止图片失败时高度为 0 */
+        .photo{
+          break-inside:avoid;
+          position:relative;
+          margin:0 0 14px 0;
+          border-radius:14px;
+          overflow:hidden;
+          border:1px solid rgba(255,255,255,.08);
+          aspect-ratio: 4 / 3;           /* ✅ 占位高度，现代浏览器 */
+          background:rgba(255,255,255,.02);
+          /* 兼容非常老的浏览器可加：min-height: 180px; */
+        }
+
+        /* 让图片铺满容器；即使加载失败也不撑高布局 */
+        .photo img{
+          position:absolute;
+          inset:0;
+          width:100%;
+          height:100%;
+          object-fit:cover;
+          opacity:1;
+          transition:opacity .4s ease;
+        }
+
+        /* 字幕正常多行换行，不被裁切 */
+        .photo figcaption{
+          position:absolute;
+          left:0; right:0; bottom:0;
+          background:linear-gradient(0deg,rgba(0,0,0,.75),transparent);
+          padding:12px 12px;
+          font-size:.9rem;
+          text-align:center;
+          line-height:1.4;
+          white-space:normal;           /* 防止长英文不换行 */
+          word-break:break-word;
+        }
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+    .tag{cursor:pointer;appearance:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--ink);padding:.35rem .7rem;border-radius:999px}
+    .tag[aria-pressed="true"]{background:rgba(239,184,200,.15);border-color:rgba(239,184,200,.5)}
+
+        /* 图片查看器 */
+        .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:50}
+        .lightbox.open{display:grid}
+        .lightbox .viewer{width:min(960px,92vw);max-height:86vh;display:grid;gap:10px}
+        .lightbox img{max-height:70vh;margin:auto;border-radius:12px}
+
+        /* ===== 时间轴 ===== */
+        .timeline{overflow:auto hidden;padding:10px}
+        .lane{display:flex;gap:16px;min-height:200px}
+        .tcard{min-width:240px;perspective:1000px}
+        .face{position:relative;height:180px;border-radius:14px;padding:14px;transform-style:preserve-3d;transition:transform .5s;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,var(--glass),rgba(255,255,255,.02))}
+        .face.flip{transform:rotateY(180deg)}
+        .front,.back{position:absolute;inset:0;padding:14px;backface-visibility:hidden}
+        .back{transform:rotateY(180deg)}
+
+        /* ===== 扭蛋机 ===== */
+        .gacha{display:grid;gap:14px}
+        .coupon{display:grid;gap:10px;padding:14px;border-radius:14px;border:1px dashed rgba(255,255,255,.3);background:linear-gradient(135deg,rgba(239,184,200,.12),rgba(255,255,255,.04))}
+
+        /* ===== 小测验 ===== */
+        .quiz{display:grid;gap:14px}
+        .q{padding:14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+
+        /* ===== 拼图 ===== */
+        .puzzle{width:min(360px,92vw);height:min(360px,92vw);position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+        .tile{position:absolute;width:33.3333%;height:33.3333%;background-size:300% 300%;border:1px solid rgba(255,255,255,.05);cursor:pointer;transition:box-shadow .15s}
+        .tile:active{box-shadow:0 0 0 2px rgba(255,255,255,.2) inset}
+
+    /* ===== 全局动效覆盖层 ===== */
+    .fx-overlay{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}
+    #fxFireworks{position:absolute;inset:0}
+    #fxBarrage{position:absolute;left:0;right:0;overflow:hidden;top:80px;bottom:auto;height:calc(100vh - 200px)}
+        
+        /* 气球设计 - 真正的气球形状 */
+        .balloon{
+            position:absolute;
+            bottom:20px; /* 从容器底部开始，可见 */
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            cursor:pointer;
+            transition:transform .2s ease;
+        }
+        .balloon:hover{transform:scale(1.05)}
+        
+        /* 气球主体 - 圆形，底部稍尖 */
+        .balloon .b{
+            width:50px;
+            height:65px;
+            background:linear-gradient(135deg, var(--balloon-color, #ff6b9d) 0%, var(--balloon-dark, #c9184a) 100%);
+            border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+            position:relative;
+            box-shadow:
+                inset -10px -10px 20px rgba(0,0,0,.2),
+                inset 10px 10px 20px rgba(255,255,255,.3),
+                0 10px 30px rgba(0,0,0,.3);
+        }
+        /* 高光效果 */
+        .balloon .b::before{
+            content:'';
+            position:absolute;
+            top:8px;
+            left:12px;
+            width:20px;
+            height:25px;
+            background:radial-gradient(ellipse at center, rgba(255,255,255,.6) 0%, transparent 60%);
+            border-radius:50%;
+        }
+        /* 气球底部小结 */
+        .balloon .b::after{
+            content:'';
+            position:absolute;
+            bottom:-5px;
+            left:50%;
+            transform:translateX(-50%);
+            width:6px;
+            height:8px;
+            background:linear-gradient(180deg, var(--balloon-dark, #c9184a), #8b0000);
+            border-radius:0 0 50% 50%;
+        }
+        
+        /* 绳子 */
+        .balloon .s{
+            width:1.5px;
+            height:60px;
+            background:linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.6));
+            margin-top:2px;
+        }
+        
+        /* 祝福文字 */
+        .balloon small{
+            margin-top:8px;
+            max-width:120px;
+            text-align:center;
+            color:var(--ink);
+            font-size:.9rem;
+            text-shadow:0 2px 4px rgba(0,0,0,.3);
+            line-height:1.3;
+        }
+        
+        /* 气球上升动画 - 包含所有变换 */
+        @keyframes floatUp{
+            0%{
+                transform:translateY(0) translateX(0) rotate(0deg);
+                opacity:1;
+            }
+            25%{
+                transform:translateY(-105px) translateX(calc(var(--drift, 0px) * 0.25)) rotate(calc(var(--rotate, 5deg) * 0.5));
+            }
+            50%{
+                transform:translateY(-210px) translateX(calc(var(--drift, 0px) * 0.5)) rotate(var(--rotate, 5deg));
+                opacity:1;
+            }
+            75%{
+                transform:translateY(-315px) translateX(calc(var(--drift, 0px) * 0.75)) rotate(calc(var(--rotate, 5deg) * 0.5));
+                opacity:0.7;
+            }
+            100%{
+                transform:translateY(-420px) translateX(var(--drift, 0px)) rotate(0deg);
+                opacity:0;
+            }
+        }
+        
+    .barrage{position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;overflow:hidden}
+    .msg{position:absolute;background:rgba(0,0,0,.7);color:#fff;padding:12px 20px;border-radius:999px;font-size:1rem;line-height:1.5;border:1px solid rgba(255,255,255,.2);white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+
+        /* ===== 承诺书 ===== */
+        .promise{display:grid;gap:14px}
+        .poster{border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden}
+        .sig{border:1px dashed rgba(255,255,255,.25);border-radius:8px;height:120px;background:rgba(255,255,255,.02)}
+
+        /* 辅助 */
+        .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+        .right{margin-left:auto}
+        .center{text-align:center}
+        .hidden{display:none!important}
+        
+        /* Resize Guard: 在频繁缩放/调整窗口时，暂时关闭过渡与动画，避免 GPU/内存抖动 */
+        html.resizing *, html.resizing .section.in-view{
+            transition:none!important; animation:none!important;
+        }
+        
+        /* 通知动画 */
+        @keyframes slideIn{
+            from{transform:translateX(120%);opacity:0}
+            to{transform:translateX(0);opacity:1}
+        }
+        @keyframes slideOut{
+            from{transform:translateX(0);opacity:1}
+            to{transform:translateX(120%);opacity:0}
+        }
+        
+        /* 图片淡入 */
+        @keyframes fadeIn{
+            from{opacity:0}
+            to{opacity:1}
+        }
+        
+        /* 加载指示器 */
+        .loading{
+            display:inline-block;
+            width:20px;
+            height:20px;
+            border:3px solid rgba(255,255,255,.3);
+            border-radius:50%;
+            border-top-color:var(--rose);
+            animation:spin 1s ease-in-out infinite;
+        }
+        @keyframes spin{
+            to{transform:rotate(360deg)}
+        }
+        
+        /* Performance: content-visibility for off-screen sections */
+        .section{
+            content-visibility:auto;
+            contain-intrinsic-size:1000px 800px;
+        }
+        /*
+         * 滚动出现动画（IntersectionObserver 配合）：
+         * - 给 section 添加 .reveal-pending 以避免首屏闪烁；
+         * - 当进入视口时移除 pending 并加 .in-view 触发动画。
+         * - 若用户偏好减少动效（prefers-reduced-motion），JS 将不启用动画。
+         */
+        @keyframes fadeSlideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        .section.reveal-pending{opacity:0}
+        .section.in-view{animation:fadeSlideUp .6s ease-out both}
+        
+        /* Skip link for accessibility */
+        .skip-link{
+            position:absolute;
+            top:-40px;
+            left:0;
+            background:var(--rose);
+            color:#0D1B2A;
+            padding:8px;
+            text-decoration:none;
+            z-index:100;
+        }
+        .skip-link:focus{
+            top:0;
+        }
+        
+        /* Status/toast container */
+        #toast-container{
+            position:fixed;
+            top:20px;
+            right:20px;
+            z-index:10000;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+        /* 移动动画的性能暗示 */
+        .balloon{will-change:transform}
+        .tile{will-change:left, top}
+        
+        /* ===== 甜蜜可爱主题 ===== */
+        body.theme-sweet {
+            --bg-deep:#201128;
+            --bg-deeper:#170c1f;
+            --ink:#FFF6FB;
+            --rose:#FFB7D5;
+            --mint:#C1FFE7;
+            --accent:#A8C8FF;
+            --card:#281536;
+            --muted:#D6CFE2;
+            --glass:rgba(255,255,255,0.08);
+        }
+        body.theme-sweet .btn{
+            background:linear-gradient(135deg,#FFB7D5,#FFE4EF 60%,#FFF8FB);
+            color:#5b2236; 
+            box-shadow:0 8px 20px rgba(255,183,213,.35);
+        }
+        body.theme-sweet .pill{
+            background:rgba(255,255,255,.10);
+            border-color:rgba(255,255,255,.18);
+        }
+        body.theme-sweet .card{
+            box-shadow:0 12px 36px rgba(0,0,0,.45);
+        }
+
+        /* ===== 更好看的气球 ===== */
+        .balloon{ 
+            filter:drop-shadow(0 10px 18px rgba(0,0,0,.35)); 
+        }
+        .balloon .b{
+            width:56px;
+            height:74px; 
+            position:relative;
+            background:linear-gradient(145deg, var(--balloon-color,#ff6b9d), var(--balloon-dark,#c9184a));
+            border-radius:52% 52% 50% 50% / 62% 62% 42% 42%;
+            box-shadow:
+                inset -14px -16px 24px rgba(0,0,0,.25),
+                inset 10px 12px 24px rgba(255,255,255,.28);
+        }
+        .balloon .b::before{ /* 软高光斑 */
+            content:""; 
+            position:absolute; 
+            top:10px; 
+            left:12px; 
+            width:24px; 
+            height:30px;
+            background:radial-gradient(circle at 35% 35%, rgba(255,255,255,.75), rgba(255,255,255,.0) 60%);
+            border-radius:50%;
+        }
+        .balloon .b::after{ /* 底部系结 */
+            content:""; 
+            position:absolute; 
+            bottom:-6px; 
+            left:50%; 
+            transform:translateX(-50%);
+            width:8px;
+            height:10px;
+            border-radius:0 0 60% 60%;
+            background:linear-gradient(180deg, var(--balloon-dark,#c9184a), #6b0f2a);
+            box-shadow:0 2px 4px rgba(0,0,0,.3) inset;
+        }
+        
+        /* 心形变体 */
+        .balloon.heart .b{
+            width:64px;
+            height:60px;
+            background:transparent;
+            box-shadow:none;
+        }
+        .balloon.heart .b > i{
+            position:absolute; 
+            left:50%; 
+            top:28px; 
+            width:34px; 
+            height:34px;
+            transform:translateX(-50%) rotate(45deg);
+            background:linear-gradient(145deg, var(--balloon-color,#ff6b9d), var(--balloon-dark,#c9184a));
+            border-radius:0 0 8px 0;
+            box-shadow:
+                inset -8px -8px 16px rgba(0,0,0,.22), 
+                inset 8px 8px 16px rgba(255,255,255,.22);
+        }
+        .balloon.heart .b::before{
+            content:""; 
+            position:absolute; 
+            width:32px; 
+            height:32px; 
+            border-radius:50%;
+            background:linear-gradient(145deg, var(--balloon-color,#ff6b9d), var(--balloon-dark,#c9184a));
+            box-shadow:
+                inset -8px -8px 16px rgba(0,0,0,.22), 
+                inset 8px 8px 16px rgba(255,255,255,.22);
+            left:6px; 
+            top:4px;
+        }
+        .balloon.heart .b::after{
+            content:""; 
+            position:absolute; 
+            width:32px; 
+            height:32px; 
+            border-radius:50%;
+            background:linear-gradient(145deg, var(--balloon-color,#ff6b9d), var(--balloon-dark,#c9184a));
+            box-shadow:
+                inset -8px -8px 16px rgba(0,0,0,.22), 
+                inset 8px 8px 16px rgba(255,255,255,.22);
+            right:6px; 
+            top:4px;
+            transform:none;
+        }
+
+        /* 绳子轻微弯曲（用渐变模拟） */
+        .balloon .s{
+            width:1.5px; 
+            height:66px; 
+            margin-top:3px;
+            background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.8));
+        }
+        
+        /* 拼图幽灵底图支持 */
+        .puzzle.ghost{ 
+            background-position:center; 
+            background-size:100% 100%; 
+            background-repeat:no-repeat;
+            opacity: 0.3;
+        }
+        .puzzle.ghost .tile{
+            opacity: 0.85;
+        }
+        .puzzle .tile{ 
+            transition: transform .15s ease; 
+        }
+    </style>
+</head>
+<body>
+    <!-- 全局背景：星空 -->
+    <canvas id="starfield" aria-hidden="true"></canvas>
+
+    <!-- Skip link for accessibility -->
+    <a href="#main" class="skip-link">跳到主内容</a>
+    
+    <!-- Toast container for notifications -->
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+    
+    <!-- 顶部导航 -->
+    <div class="nav" role="navigation" aria-label="主导航">
+        <div class="nav-inner">
+            <div class="pill">🌌 子茜的星河生日展</div>
+            <nav class="row" aria-label="章节">
+                <a id="navPhotos" href="#photos">相册</a>
+                <a id="navTimeline" href="#timeline">时间轴</a>
+                <a id="navGacha" href="#gacha">扭蛋</a>
+                <a id="navQuiz" href="#quiz">小测</a>
+                <a id="navPuzzle" href="#puzzle">拼图</a>
+                <a id="navPromise" href="#promise">承诺书</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero 舞台 -->
+    <section id="hero" class="container">
+        <div class="hero-content">
+            <div class="pill">第 <span id="revolutions">—</span> 次绕日旅行</div>
+            <h1 class="title">Happy Orbit, <span style="color:var(--rose)">Zixian</span> ✨</h1>
+            <div id="typing" class="typing" aria-live="polite"></div>
+            <div class="hero-actions">
+                <span class="gate" role="group" aria-label="密语解锁">
+                    <input id="key" placeholder="输入密语（如生日：2001-06-18）" aria-label="密语" autocomplete="off" />
+                    <button class="btn ghost" id="unlock" type="button">解锁</button>
+                </span>
+                <button class="btn" id="goPhotos" type="button">开始逛展</button>
+            </div>
+            <p id="heroTip" class="muted">小彩蛋提示：快速连点 Z I X I A N 可解锁隐藏相册</p>
+        </div>
+    </section>
+
+    <!-- 相册银河 -->
+    <main id="main">
+    <section id="photos" class="section" role="main">
+        <div class="container">
+            <h2 id="photosTitle">📷 相册银河</h2>
+            <p id="photosSub" class="muted">每一张照片都是星座的一颗星。</p>
+            <div class="tags" id="filters"></div>
+            <div class="gallery" id="gallery" aria-live="polite"></div>
+        </div>
+    </section>
+
+    <!-- 查看器 -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片查看器">
+        <div class="viewer card">
+            <img id="big" alt="放大照片" />
+            <div class="row" style="justify-content:space-between;padding:8px 12px">
+                <div id="bigcap" class="muted"></div>
+                <div class="row">
+                    <button class="btn ghost" id="prevLight" type="button" aria-label="上一张">上一张</button>
+                    <button class="btn ghost" id="nextLight" type="button" aria-label="下一张">下一张</button>
+                    <button class="btn ghost" id="closeLight" type="button">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 时间轴 -->
+    <section id="timeline" class="section">
+        <div class="container">
+            <h2 id="timelineTitle">🗺️ 我们的时间轴</h2>
+            <div class="timeline card">
+                <div class="lane" id="lane"></div>
+            </div>
+            <p id="timelineTip" class="muted">点击卡片翻面，查看“那天我想说的话”。</p>
+        </div>
+    </section>
+
+    <!-- 扭蛋机 -->
+    <section id="gacha" class="section">
+        <div class="container">
+            <h2 id="gachaTitle">🎁 心愿扭蛋机</h2>
+            <div class="gacha">
+                <div class="row">
+                    <button class="btn" id="roll" type="button">扭一个</button>
+                    <button class="btn ghost" id="saveCoupon" type="button" disabled>下载券PNG</button>
+                </div>
+                <div class="coupon" id="coupon" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 默契小测 -->
+    <section id="quiz" class="section">
+        <div class="container">
+            <h2 id="quizTitle">💞 默契小测</h2>
+            <form class="quiz" id="quizForm"></form>
+            <div class="row">
+                <button class="btn" id="submitQuiz" type="button">生成默契值</button>
+                <div class="pill" id="scoreLabelPill">默契值：<span id="score">—</span></div>
+                <button class="btn ghost" id="saveBadge" type="button" disabled>下载徽章PNG</button>
+            </div>
+            <canvas id="badgeCanvas" width="600" height="320" class="poster hidden" aria-hidden="true"></canvas>
+        </div>
+    </section>
+
+    <!-- 拼图解锁 -->
+    <section id="puzzle" class="section">
+        <div class="container">
+            <h2 id="puzzleTitle">🧩 小拼图 · 解锁生日惊喜</h2>
+            <p id="puzzleTip" class="muted">将碎片移动到正确位置。完成后自动解锁惊喜音频。</p>
+            <div class="row" style="align-items:flex-start">
+                <div class="puzzle card" id="puzzleStage" aria-label="3x3滑块拼图" role="application"></div>
+                <div class="card" style="padding:14px;min-width:260px">
+                    <div class="row"><button class="btn" id="shuffle" type="button">重新打乱</button><button class="btn ghost" id="reveal" type="button">看原图</button></div>
+                    <audio id="surprise" class="row" controls src="" preload="none"></audio>
+                    <p class="muted">完成提示会出现，音频即解锁播放。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 全局动效覆盖层（自动弹幕 + 气球），不占据布局，pointer-events:none -->
+    <div id="fxOverlay" class="fx-overlay" aria-hidden="true">
+        <canvas id="fxFireworks"></canvas>
+        <div class="barrage" id="fxBarrage"></div>
+    </div>
+
+    <!-- 承诺书 & 纪念卡 -->
+    <section id="promise" class="section">
+        <div class="container">
+            <h2 id="promiseTitle">📜 宇宙承诺书</h2>
+            <div class="promise">
+                <textarea id="pledge" class="card" rows="6" style="padding:14px;color:var(--ink);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px">亲爱的子茜：\n\n愿做你漫长航程里的耐心光源。未来的每一个平凡日子，我负责把它们点亮。\n\n请继续做我的北极星。\n\n署名：___\n日期：___</textarea>
+                <label class="muted" id="sigLabel">在下方手写签名</label>
+                <canvas id="sig" class="sig" aria-label="签名"></canvas>
+                <div class="row">
+                    <button class="btn" id="savePoster" type="button">生成纪念卡PNG</button>
+                    <button class="btn ghost" id="clearSig" type="button">清空签名</button>
+                </div>
+                <canvas id="poster" width="900" height="1400" class="poster" aria-label="纪念卡预览"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section">
+        <div class="container center muted">© <span id="year"></span> For Zixian, with stardust. 祝你生日快乐。</div>
+    </footer>
+    </main>
+
+    <script>
+    // ===== v3.2 - Config-driven & Global Effects =====
+    'use strict';
+    
+    console.log('🎈 Happy Birthday Script v3.0 - Professional Edition');
+    
+    /*
+     * ===== 统一配置（开发者只需改这里） =====
+     * 用途：集中管理网站所有可见文案/参数（标题、按钮、提示、题库、动效等）。
+     * 生效：保存并刷新即可（纯静态，无构建步骤）。
+     * 安全：用户输入都有 sanitize；本配置为静态文本，将按原样渲染。
+     * 位置映射：每个字段下方附注了“出现位置/注意事项”，便于快速定位修改。
+     */
+    const CONFIG = {
+        site: {
+            // 出现位置：<title> / og:title / 导航品牌 Pill
+            title: '子茜的星河生日展 · Happy Orbit, Zixian',
+            // 出现位置：<meta name="description"> / og:description（用于分享卡片）
+            description: '为子茜定制的一页式生日网页：相册银河、时间轴、扭蛋券、默契小测、拼图解锁、弹幕气球、签名纪念卡',
+            // 出现位置：导航栏左侧品牌
+            brand: '🌌 子茜的星河生日展',
+            // 出现位置：og:image（建议 1200×630），社交平台分享预览图
+            ogImage: 'https://images.unsplash.com/photo-1529336953121-a0ce99a0f007?w=1200&h=630&fit=crop',
+            // 出现位置：<meta name="theme-color">，影响浏览器地址栏/安卓任务栏配色
+            themeColor: '#0D1B2A'
+        },
+        nav: {
+            // 出现位置：顶部导航；对应锚点 #photos/#timeline/#gacha/#quiz/#puzzle/#promise
+            photos: '相册', timeline: '时间轴', gacha: '扭蛋', quiz: '小测', puzzle: '拼图', promise: '承诺书'
+        },
+        hero: {
+            // 出现位置：首页主标题（支持少量内联样式/Emoji）
+            titleHTML: 'Happy Orbit, <span style="color:var(--rose)">Zixian</span> ✨',
+            // 出现位置：主标题下的打字机字幕（循环显示）；可用 'N' 代表本年与 2001 的差值
+            lines: ['与你同轨的第N次绕日旅行。','今晚，把回忆排成星座。','祝你生日快乐，子茜。'],
+            // 出现位置：密语输入框占位
+            keyPlaceholder: '输入密语（如生日：2001-06-18）',
+            // 出现位置：密语解锁按钮
+            unlock: '解锁',
+            // 出现位置：开始逛展按钮（滚动到相册）
+            go: '开始逛展',
+            // 出现位置：Hero 底部提示（键盘/连点彩蛋等）
+            tip: '小彩蛋提示：快速连点 Z I X I A N 可解锁隐藏相册'
+        },
+        sections: {
+            // 相册模块：标题 + 副文案（模块顶部）
+            photos: { title: '📷 相册银河', sub: '每一张照片都是星座的一颗星。' },
+            // 时间轴模块：标题 + 提示（提示显示在卡片上方）
+            timeline: { title: '🗺️ 我们的时间轴', tip: '点击卡片翻面，查看“那天我想说的话”。' },
+            // 扭蛋模块：标题/按钮 + 券卡片/PNG 文案（页面展示与下载图片一致）
+            gacha: { title: '🎁 心愿扭蛋机', roll: '扭一个', save: '下载券PNG',
+                winBanner: '🎟️ 恭喜抽中', serialLabel: '编号', rules: '使用说明：仅限持有人 · 永不过期 · 可叠加拥抱', brandEn: 'ZIXIAN BIRTHDAY COUPON'
+            },
+            // 小测模块：标题/按钮；scoreLabel 与 badgeFooter 也体现在生成的徽章 PNG 里
+            quiz: { title: '💞 默契小测', submit: '生成默契值', scoreLabel: '默契值', save: '下载徽章PNG', badgeFooter: 'Zixian & You' },
+            // 拼图模块：标题/提示/按钮（完成后若设置了 surpriseAudio 则播放）
+            puzzle: { title: '🧩 小拼图 · 解锁生日惊喜', tip: '将碎片移动到正确位置。完成后自动解锁惊喜音频。', shuffle: '重新打乱', reveal: '看原图' },
+            // 承诺书模块：签名区提示 + 按钮
+            promise: { title: '📜 宇宙承诺书', sigLabel: '在下方手写签名', save: '生成纪念卡PNG', clear: '清空签名' },
+            // 页脚：支持 {year} 占位符
+            footer: '© {year} For Zixian, with stardust. 祝你生日快乐。'
+        },
+        // Toast 提示集合：所有弹出的操作结果/错误提醒都从这里取
+        messages: {
+            unlockSuccess: '解锁成功：已加入隐藏相册 ✨',
+            unlockFail: '密语不对，但星星不会记仇~ 💫',
+            easterEgg: '彩蛋解锁：未公开的傻照已加入~ 🎉',
+            autoplayBlocked: '自动播放受限，请先与页面交互再试一次～',
+            genericIssue: '遇到了小问题，但不影响使用 🌟'
+        },
+        data: {
+            // 解锁密语：任一命中即视为解锁（仅存布尔状态，不回写明文）
+            secretKeys: ["2001-06-18","20010618","loveu","zixian"],
+            // 相册数组：{src, tag, place, time, say}
+            photos: [
+                {src:"https://images.unsplash.com/photo-1529336953121-a0ce99a0f007?q=80&w=1400&auto=format&fit=crop", tag:"旅行", place:"青岛", time:"2023-08", say:"海风把你眸子里的光也吹亮了"},
+                {src:"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1400&auto=format&fit=crop", tag:"日常", place:"家", time:"2024-02", say:"煎蛋的边缘像日出"},
+                {src:"https://images.unsplash.com/photo-1489440543286-a69330151c0a?q=80&w=1400&auto=format&fit=crop", tag:"高甜", place:"咖啡馆", time:"2024-11", say:"拿铁泡沫上的小胡子案发现场"},
+                {src:"https://images.unsplash.com/photo-1510772314292-9c0ad4c82d9d?q=80&w=1400&auto=format&fit=crop", tag:"搞笑", place:"游乐园", time:"2022-10", say:"尖叫的和笑的其实一个意思"},
+                {src:"https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1400&auto=format&fit=crop", tag:"旅行", place:"山野", time:"2021-07", say:"银河要从你的睫毛上路过"},
+                {src:"https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop", tag:"日常", place:"小区", time:"2024-05", say:"晚风和你都准确抵达"}
+            ],
+            // 时间轴卡片：when（角标）/ front（正面）/ back（反面）
+            timeline: [
+                {when:"初见", front:"第一次心动", back:"如果能回到那天，我会更大声地说：幸会，宇宙赠品。"},
+                {when:"第一次旅行", front:"错过末班车", back:"原来慢一点，世界会更配合我们。"},
+                {when:"第一份礼物", front:"亲手做的蛋糕", back:"糖霜太甜，但你笑起来刚好。"},
+                {when:"搬家那周", front:"箱子山", back:"谢谢你把我的混乱也装箱打包。"},
+                {when:"今年今天", front:"生日！", back:"继续并肩，以恒星作路灯。"}
+            ],
+            // 扭蛋池：title/desc 体现在卡片与下载 PNG
+            coupons: [
+                {title:"床上早餐券", desc:"周末任选一日，奉上手作早餐+咖啡。"},
+                {title:"肩颈按摩券", desc:"15分钟肩颈放松，按到你呼噜响。"},
+                {title:"电影自由券", desc:"你选片，我闭嘴。"},
+                {title:"散步雨天券", desc:"小区绕两圈，伞下讲八卦。"},
+                {title:"家务终止券", desc:"当日免除一切家务，监督也算。"}
+            ],
+            // 小测题库：q 问题文本 / a 选项数组 / pick 正确下标
+            quiz: [
+                {q:"她更爱哪种早饭？", a:["咸党","甜党"], pick:1},
+                {q:"最常用的表情？", a:["(=ﾟωﾟ)=","(˘︶˘).｡."], pick:0},
+                {q:"最不舍得删的照片类型？", a:["糊但快乐","美但无聊"], pick:0},
+                {q:"理想旅行方式？", a:["步行城市","海边发呆"], pick:1},
+                {q:"收到花最想要？", a:["向日葵","满天星"], pick:1}
+            ],
+            // 拼图背景（CSS 背景切片显示；不绘制到 Canvas，不受 CORS 限制）
+            puzzleImg: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+            // 拼图完成后播放（可留空以禁用）
+            surpriseAudio: "",
+            // 背景音乐（导航会出现播放/静音按钮；留空则隐藏按钮）
+            bgm: ""
+        },
+        // 主题配置（'sweet' 开启粉嫩主题）
+        ui: { theme: 'sweet' },
+        effects: {
+            // 性能自适应
+            performance: {
+                targetFPS: 55, 
+                degradeAt: [48, 32],
+                maxBalloons: 24, 
+                maxBarrages: 60,
+                dprFactor: {"1":0.9,"1.5":1.0,"2":1.05,"3":1.1}
+            },
+            // 全局气球动效（页面上层漂浮）
+            balloons: {
+                enabled: true,
+                // 每分钟大约多少个气球（实际计时带轻微随机抖动）
+                densityPerMinute: 15,
+                // 上升动画时长（秒区间，单个气球在区间内随机）
+                speedSecRange: [7, 12],
+                // 气球文案池（为空时会回退到内置 DEFAULT_WISHES）
+                texts: ['生日快乐','永远开心','所爱皆所得','被世界温柔以待'],
+                colors: [
+                    ['#ff6b9d','#c9184a'],['#ffd93d','#f9a826'],['#6bcf7f','#2d8f47'],['#74c0fc','#339af0'],['#da77f2','#9c36d4'],['#ff8787','#fa5252']
+                ],
+                shape: 'mix',        // 'round' | 'heart' | 'mix'
+                glossy: true,        // 高光&边缘光
+                depthBlur: [0, 1.5]  // 同屏景深（像素）范围
+            },
+            // 全局弹幕动效（横向滚动）
+            barrage: {
+                enabled: true,
+                // 每分钟大约多少条弹幕（实际计时带轻微随机抖动）
+                densityPerMinute: 20,
+                // 单条弹幕滚动全屏所需时间（毫秒区间，单条在区间内随机）
+                speedMsRange: [5000, 9000],
+                // 弹幕文案池（为空时会回退到内置 DEFAULT_WISHES）
+                messages: ['Zixian生日快乐！','愿你星河长明','今天也要开心！','有我在~','要一直被爱包围']
+            }
+        },
+        // 拼图可配置
+        puzzle: { 
+            defaultSize: 3, 
+            sizeOptions: [3, 4], 
+            showGhost: true 
+        }
+    };
+
+    // ===== 文案总控（Alt+E / 导航按钮"📝 文案"）=====
+    (function CopyCenter(){
+      const OVK='COPY_OVERRIDES_V1';
+      const isObj=o=>o&&typeof o==='object'&&!Array.isArray(o);
+      const norm=p=>p.replace(/\[(\d+)\]/g,'.$1');
+      const get=(o,p)=>norm(p).split('.').reduce((a,k)=>a?.[k],o);
+      const set=(o,p,v)=>{ const ks=norm(p).split('.'); const last=ks.pop(); let cur=o;
+        for(const k of ks){ if(!(k in cur)||!isObj(cur[k])) cur[k]={}; cur=cur[k]; } cur[last]=v; };
+      const merge=(t,s)=>{ for(const k in s){ if(isObj(s[k])){ if(!isObj(t[k])) t[k]={}; merge(t[k],s[k]); } else { t[k]=s[k]; } } return t; };
+      const collect=(o,prefix='',out=[])=>{
+        if(typeof o==='string'){ out.push({path:prefix,value:o}); return out; }
+        if(Array.isArray(o)){ o.forEach((it,i)=>collect(it,`${prefix}[${i}]`,out)); return out; }
+        if(isObj(o)){ Object.keys(o).forEach(k=>collect(o[k], prefix?`${prefix}.${k}`:k, out)); }
+        return out;
+      };
+
+      // 载入历史覆盖
+      try{ const raw=localStorage.getItem(OVK); if(raw) merge(CONFIG, JSON.parse(raw)); }catch{}
+
+      // 绑定与刷新（把 key 记到 DOM，便于高亮与重打）
+      const B=[];
+      window.bindText=(sel,key,{html=false}={})=>{
+        const el=document.querySelector(sel); if(!el) return;
+        const v=get(CONFIG,key); if(v==null) return;
+        if(html) el.innerHTML=v; else el.textContent=v;
+        el.dataset.copyKey=key; B.push({sel,key,html});
+      };
+      window.refreshCopy=()=>{
+        B.forEach(({sel,key,html})=>{
+          const el=document.querySelector(sel); if(!el) return;
+          const v=get(CONFIG,key); if(v==null) return;
+          if(html) el.innerHTML=v; else el.textContent=v;
+        });
+        try{ dom.clear(); }catch{}
+        try{ gallery.renderFilters(); gallery.render(); }catch{}
+        try{ renderTimeline(); }catch{}
+        try{ renderQuiz(); }catch{}
+        if (Array.isArray(CONFIG.hero.lines)) window.__TYPEWRITER_LINES__ = CONFIG.hero.lines.slice();
+      };
+
+      // 文案面板 UI
+      function setupUI(){
+        const css=`
+        #copyBtn{margin-left:8px}
+        #copyPanel{position:fixed;top:0;right:0;width:min(520px,100%);height:100vh;background:#0b1624;
+          box-shadow:-24px 0 40px rgba(0,0,0,.4);z-index:9999;display:none;flex-direction:column}
+        #copyPanel.open{display:flex}
+        #copyPanel header{display:flex;gap:8px;align-items:center;padding:10px;border-bottom:1px solid rgba(255,255,255,.08)}
+        #copyPanel input,#copyPanel textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+          color:#e6e6fa;border-radius:8px;padding:8px}
+        #copyList{padding:10px;overflow:auto;display:grid;gap:8px}
+        .copy-item{display:grid;gap:6px}
+        .copy-key{font:12px/1.2 system-ui;color:#9aa7b2}
+        [data-copy-highlight] [data-copy-key]::after{
+          content:attr(data-copy-key);position:absolute;left:6px;bottom:6px;background:#efb8c8;color:#381a22;border-radius:6px;
+          padding:2px 6px;font:12px/1 system-ui }
+        `;
+        const st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
+
+        const nav=document.querySelector('.nav-inner');
+        const btn=document.createElement('button'); btn.id='copyBtn'; btn.className='pill'; btn.type='button'; btn.textContent='📝 文案';
+        btn.addEventListener('click',toggle); if(nav) nav.appendChild(btn);
+
+        const p=document.createElement('div'); p.id='copyPanel';
+        p.innerHTML=`
+          <header>
+            <strong style="flex:1">文案面板</strong>
+            <input id="copySearch" placeholder="搜索 key 或内容…" />
+            <button class="btn ghost" id="copyHighlight">高亮</button>
+            <button class="btn ghost" id="copyExport">导出JSON</button>
+            <button class="btn ghost" id="copyImport">导入JSON</button>
+            <button class="btn" id="copyClose">关闭</button>
+          </header>
+          <div id="copyList"></div>`;
+        document.body.appendChild(p);
+
+        const list=p.querySelector('#copyList');
+        const render=(q='')=>{
+          const items=collect(CONFIG).filter(it=>{
+            const s=(it.path+' '+it.value).toLowerCase(); return !q || s.includes(q.toLowerCase());
+          });
+          list.innerHTML='';
+          for(const it of items){
+            const wrap=document.createElement('div'); wrap.className='copy-item';
+            wrap.innerHTML=`<div class="copy-key">${it.path}</div>`;
+            const multi=/\n/.test(it.value) || it.value.length>60;
+            const field=document.createElement(multi?'textarea':'input');
+            field.value=it.value;
+            field.addEventListener('input', (e)=>{
+              set(CONFIG,it.path,e.target.value);
+              localStorage.setItem(OVK, JSON.stringify(CONFIG));
+              refreshCopy();
+            });
+            wrap.appendChild(field); list.appendChild(wrap);
+          }
+        };
+        render();
+        p.querySelector('#copySearch').addEventListener('input',e=>render(e.target.value));
+        let hl=false; p.querySelector('#copyHighlight').addEventListener('click',()=>{
+          hl=!hl; document.documentElement.toggleAttribute('data-copy-highlight',hl);
+        });
+        p.querySelector('#copyExport').addEventListener('click',()=>{
+          const blob=new Blob([JSON.stringify(CONFIG,null,2)],{type:'application/json'});
+          const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='copy.json'; a.click();
+          setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+        });
+        p.querySelector('#copyImport').addEventListener('click',()=>{
+          const txt=prompt('粘贴 JSON：'); if(!txt) return;
+          try{ merge(CONFIG, JSON.parse(txt)); localStorage.setItem(OVK, JSON.stringify(CONFIG)); refreshCopy(); render(); }
+          catch{ alert('JSON 无效'); }
+        });
+        
+        // —— 资产（图片）管理：扫描并上传替换 —— //
+        const ASSET_BOX = document.createElement('details');
+        ASSET_BOX.open = true;
+        ASSET_BOX.innerHTML = `
+          <summary style="padding:8px 10px;border-top:1px solid rgba(255,255,255,.08);cursor:pointer">📷 资产 · 图片替换</summary>
+          <div id="assetList" style="padding:10px;display:grid;gap:10px"></div>`;
+        p.appendChild(ASSET_BOX);
+
+        function looksLikeImage(v){
+          return typeof v==='string' && /^(data:image\/|https?:\/\/).+/i.test(v);
+        }
+        // 收集所有 string 图片字段（含数组）
+        function collectImageKeys(root){
+          const out=[]; const walk=(o, path='')=>{
+            if (typeof o==='string'){ if(looksLikeImage(o)) out.push({path,value:o}); return; }
+            if (Array.isArray(o)){ o.forEach((it,i)=>walk(it, `${path}[${i}]`)); return; }
+            if (o && typeof o==='object'){ Object.keys(o).forEach(k=>walk(o[k], path?`${path}.${k}`:k)); }
+          }; walk(root); return out;
+        }
+
+        function drawAssets(){
+          const box = ASSET_BOX.querySelector('#assetList'); box.innerHTML='';
+          const imgs = collectImageKeys(CONFIG);
+          imgs.forEach(({path,value})=>{
+            const row=document.createElement('div');
+            row.style.display='grid'; row.style.gridTemplateColumns='1fr auto'; row.style.gap='8px'; row.style.alignItems='center';
+            const left=document.createElement('div');
+            const shortValue = value.length > 50 ? value.substring(0, 47) + '...' : value;
+            left.innerHTML = `<div class="copy-key">${path}</div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:4px">
+                <img src="${value}" alt="" style="width:64px;height:48px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.15)" onerror="this.style.display='none'"/>
+                <input value="${shortValue}" readonly style="cursor:pointer;font-size:11px" title="${value}" />
+              </div>`;
+            const up=document.createElement('button'); up.className='btn ghost'; up.textContent='上传替换'; up.style.fontSize='12px';
+            up.addEventListener('click', async ()=>{
+              const f=document.createElement('input'); f.type='file'; f.accept='image/*';
+              f.onchange=async ()=>{
+                const file=f.files?.[0]; if(!file) return;
+                const dataUrl = await compressToDataURL(file, 1600, 0.85); // 宽度上限，质量85%
+                set(CONFIG, path, dataUrl);
+                localStorage.setItem(OVK, JSON.stringify(CONFIG));
+                refreshCopy(); drawAssets();
+              }; f.click();
+            });
+            row.append(left,up); box.appendChild(row);
+          });
+        }
+        drawAssets();
+
+        // 图片压缩到 dataURL（避免 CORS，适配拼图背景）
+        async function compressToDataURL(file, maxW=1600, quality=0.85){
+          return new Promise((resolve)=>{
+            const r=new FileReader(); 
+            r.onload=()=>{ 
+              const i=new Image(); 
+              i.onload=()=>{
+                const scale = Math.min(1, maxW / i.width);
+                const w = Math.round(i.width*scale), h=Math.round(i.height*scale);
+                const c=document.createElement('canvas'); c.width=w; c.height=h;
+                const ctx=c.getContext('2d'); ctx.drawImage(i,0,0,w,h);
+                resolve(c.toDataURL('image/jpeg', quality));
+              };
+              i.src=r.result; 
+            }; 
+            r.readAsDataURL(file); 
+          });
+        }
+        
+        p.querySelector('#copyClose').addEventListener('click',toggle);
+        document.addEventListener('keydown',e=>{ if(e.altKey && (e.key==='e'||e.key==='E')){ e.preventDefault(); toggle(); } });
+        function toggle(){ p.classList.toggle('open'); }
+      }
+      if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',setupUI); } else setupUI();
+
+      // 少量 API
+      window.__COPY_PANEL__={open:()=>document.getElementById('copyPanel')?.classList.add('open')};
+    })();
+
+    // ===== 性能监控 =====
+    const perf = {
+        start: performance.now(),
+        mark: (name) => {
+            const t = performance.now() - perf.start;
+            console.log(`⏱️ ${name}: ${t.toFixed(2)}ms`);
+        }
+    };
+
+    // 将页面静态文案与元信息从 CONFIG 注入
+    function applyConfig(){
+        document.title = CONFIG.site.title;
+        const metaDesc=document.querySelector('meta[name="description"]'); if(metaDesc) metaDesc.setAttribute('content',CONFIG.site.description);
+        const ogTitle=document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content',CONFIG.site.title);
+        const ogDesc=document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content',CONFIG.site.description);
+        const ogImg=document.querySelector('meta[property="og:image"]'); if(ogImg) ogImg.setAttribute('content',CONFIG.site.ogImage);
+        const theme=document.querySelector('meta[name="theme-color"]'); if(theme) theme.setAttribute('content',CONFIG.site.themeColor);
+
+        bindText('.nav-inner .pill','site.brand');
+        bindText('#navPhotos','nav.photos');
+        bindText('#navTimeline','nav.timeline');
+        bindText('#navGacha','nav.gacha');
+        bindText('#navQuiz','nav.quiz');
+        bindText('#navPuzzle','nav.puzzle');
+        bindText('#navPromise','nav.promise');
+
+        bindText('h1.title','hero.titleHTML',{html:true});
+        const keyInput=document.getElementById('key'); if(keyInput) keyInput.placeholder=CONFIG.hero.keyPlaceholder;
+        bindText('#unlock','hero.unlock');
+        bindText('#goPhotos','hero.go');
+        bindText('#heroTip','hero.tip');
+
+        bindText('#photosTitle','sections.photos.title');
+        bindText('#photosSub','sections.photos.sub');
+        bindText('#timelineTitle','sections.timeline.title');
+        bindText('#timelineTip','sections.timeline.tip');
+        bindText('#gachaTitle','sections.gacha.title');
+        bindText('#roll','sections.gacha.roll');
+        bindText('#saveCoupon','sections.gacha.save');
+        bindText('#quizTitle','sections.quiz.title');
+        bindText('#submitQuiz','sections.quiz.submit');
+        const scorePill=document.querySelector('#scoreLabelPill');
+        if(scorePill) scorePill.innerHTML=`${CONFIG.sections.quiz.scoreLabel}：<span id="score">—</span>`;
+        bindText('#saveBadge','sections.quiz.save');
+        bindText('#puzzleTitle','sections.puzzle.title');
+        bindText('#puzzleTip','sections.puzzle.tip');
+        bindText('#shuffle','sections.puzzle.shuffle');
+        bindText('#reveal','sections.puzzle.reveal');
+        bindText('#promiseTitle','sections.promise.title');
+        bindText('#sigLabel','sections.promise.sigLabel');
+        bindText('#savePoster','sections.promise.save');
+        bindText('#clearSig','sections.promise.clear');
+
+        const footer=document.querySelector('footer .container');
+        if(footer) footer.innerHTML=(CONFIG.sections.footer||'').replace('{year}', new Date().getFullYear());
+
+        if(Array.isArray(CONFIG.hero.lines)) window.__TYPEWRITER_LINES__=CONFIG.hero.lines.slice();
+    }
+    
+    // ===== 数据（改为从 CONFIG 读取） =====
+    const DATA = CONFIG.data;
+
+    // 祝福短语库（用于自动或空输入时随机）
+    const DEFAULT_WISHES = [
+        '愿你快乐','平安喜乐','万事胜意','心想事成','前程似锦',
+        '得偿所愿','日日自新','顺风顺水','所爱皆所得','永远有光',
+        '岁岁常欢愉','星河长明','温柔且坚强','被世界温柔以待'
+    ];
+    
+    // ===== 安全工具：文本清理（防XSS） =====
+    const sanitize = {
+        text: (str) => String(str || '').slice(0, 500),
+        html: (str) => sanitize.text(str).replace(/[<>'"&]/g, c => ({
+            '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;', '&': '&amp;'
+        })[c])
+    };
+    
+    // ===== 精确绕日次数计算 =====
+    function orbitsSince(isoDate = '2001-06-18') {
+        const birth = new Date(isoDate);
+        const now = new Date();
+        let years = now.getFullYear() - birth.getFullYear();
+        const hadBirthday = (now.getMonth() > birth.getMonth()) || 
+                          (now.getMonth() === birth.getMonth() && now.getDate() >= birth.getDate());
+        return hadBirthday ? years : years - 1;
+    }
+    
+    // ===== Unsplash 响应式图片辅助 =====
+    const unsplash = (baseUrl, width) => {
+        try {
+            const url = new URL(baseUrl);
+            url.searchParams.set('w', width);
+            url.searchParams.set('auto', 'format');
+            url.searchParams.set('fit', 'crop');
+            url.searchParams.set('q', '80');
+            return url.toString();
+        } catch {
+            return baseUrl;
+        }
+    };
+    
+    // ===== LocalStorage 安全封装 =====
+    const storage = {
+        get: (key, fallback = null) => {
+            try {
+                const val = localStorage.getItem(key);
+                return val ? JSON.parse(val) : fallback;
+            } catch { return fallback; }
+        },
+        set: (key, val) => {
+            try {
+                localStorage.setItem(key, JSON.stringify(val));
+                return true;
+            } catch { return false; }
+        }
+    };
+
+    // ===== 工具类：性能优化的 DOM 查询 =====
+    class DOMCache {
+        constructor() {
+            this.cache = new Map();
+        }
+        get(selector) {
+            if (!this.cache.has(selector)) {
+                this.cache.set(selector, document.querySelector(selector));
+            }
+            return this.cache.get(selector);
+        }
+        getAll(selector) {
+            return document.querySelectorAll(selector);
+        }
+        clear() {
+            this.cache.clear();
+        }
+    }
+    
+    const dom = new DOMCache();
+    const $ = (s) => dom.get(s);
+    const $$ = (s) => dom.getAll(s);
+
+    // ===== 小工具函数（改进版） =====
+    const rand = (n) => Math.floor(Math.random() * n);
+    const randRange = (min, max) => min + Math.random() * (max - min);
+    
+    const downloadBlob = (blob, filename) => {
+        const a = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        a.download = filename;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+    
+    const debounce = (fn, delay = 150) => {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn(...args), delay);
+        };
+    };
+    
+    const throttle = (fn, limit = 100) => {
+        let inThrottle;
+        return (...args) => {
+            if (!inThrottle) {
+                fn(...args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    };
+    
+    // 安全的 IntersectionObserver（懒加载优化）
+    const lazyObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    lazyObserver.unobserve(img);
+                }
+            }
+        });
+    }, { rootMargin: '50px' }) : null;
+    
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const smoothBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+    // 通用：CSS像素到高DPR画布缩放（改进版）
+    function scaleCanvas(canvas, ctx) {
+        const rect = canvas.getBoundingClientRect();
+        // 动态限制 DPR 与画布像素，避免浏览器在极限缩放下分配超大位图导致崩溃
+        const MAX_DIM = 4096; // 单边最大像素（保护阈值）
+        const rawDpr = window.devicePixelRatio || 1;
+        const dprCap = Math.min(2, MAX_DIM / Math.max(1, rect.width), MAX_DIM / Math.max(1, rect.height));
+        const dpr = Math.max(1, Math.min(rawDpr, dprCap));
+        const w = Math.max(1, Math.floor(rect.width * dpr));
+        const h = Math.max(1, Math.floor(rect.height * dpr));
+        if (canvas.width !== w || canvas.height !== h) {
+            canvas.width = w;
+            canvas.height = h;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        return { width: rect.width, height: rect.height, dpr };
+    }
+    
+    applyConfig();
+    
+    // ===== 启用甜蜜主题 =====
+    if (CONFIG.ui?.theme === 'sweet') { 
+        document.body.classList.add('theme-sweet'); 
+    }
+    
+    perf.mark('核心工具初始化完成');
+
+    // ===== 星野背景 & 打字机（优化版） =====
+    const typingEl = $('#typing');
+    // 从 CONFIG.hero.lines 注入，可随时在顶部配置修改
+    const lines = Array.isArray(window.__TYPEWRITER_LINES__) ? window.__TYPEWRITER_LINES__ : [
+        '与你同轨的第N次绕日旅行。',
+        '今晚，把回忆排成星座。',
+        '祝你生日快乐，子茜。'
+    ];
+    
+    // 打字机效果管理器
+    class TypeWriter {
+        constructor(element, lines, speed = 50) {
+            this.element = element;
+            this.lines = lines;
+            this.speed = speed;
+            this.lineIdx = 0;
+            this.charIdx = 0;
+            this.isRunning = false;
+        }
+        
+        start() {
+            if (prefersReducedMotion) {
+                const str = this.lines[0].replace('N', new Date().getFullYear() - 2001);
+                this.element.textContent = str;
+                return;
+            }
+            this.isRunning = true;
+            this.tick();
+        }
+        
+        tick() {
+            if (!this.isRunning) return;
+            
+            const str = this.lines[this.lineIdx].replace('N', new Date().getFullYear() - 2001);
+            this.element.textContent = str.slice(0, this.charIdx++);
+            
+            if (this.charIdx <= str.length) {
+                setTimeout(() => this.tick(), this.speed);
+            } else {
+                setTimeout(() => {
+                    this.charIdx = 0;
+                    this.lineIdx = (this.lineIdx + 1) % this.lines.length;
+                    this.tick();
+                }, 1200);
+            }
+        }
+        
+        stop() {
+            this.isRunning = false;
+        }
+    }
+    
+    const typeWriter = new TypeWriter(typingEl, lines);
+    typeWriter.start();
+    
+    // 使用精确的绕日次数计算
+    const orbits = orbitsSince('2001-06-18');
+    const revolutionsEl = $('#revolutions');
+    if (revolutionsEl) revolutionsEl.textContent = orbits;
+
+    // 星星场（性能优化版）
+    class StarField {
+        constructor(canvas) {
+            this.canvas = canvas;
+            this.ctx = canvas.getContext('2d', { alpha: true });
+            this.stars = [];
+            this.width = 0;
+            this.height = 0;
+            this.animationId = null;
+            this.init();
+        }
+        
+        init() {
+            this.resize();
+            if (!prefersReducedMotion) {
+                this.animate();
+            } else {
+                this.drawFrame();
+            }
+        }
+        
+        resize() {
+            const dims = scaleCanvas(this.canvas, this.ctx);
+            this.width = dims.width;
+            this.height = dims.height;
+            this.createStars();
+        }
+        
+        createStars() {
+            const count = Math.min(200, Math.floor(this.width * this.height / 1000));
+            this.stars = Array.from({ length: count }, () => ({
+                x: Math.random() * this.width,
+                y: Math.random() * this.height,
+                z: Math.random() * 1 + 0.2,
+                vx: (Math.random() - 0.5) * 0.15,
+                vy: (Math.random() - 0.5) * 0.15
+            }));
+        }
+        
+        drawFrame() {
+            this.ctx.clearRect(0, 0, this.width, this.height);
+            for (const s of this.stars) {
+                this.ctx.fillStyle = `rgba(255,255,255,${0.4 + s.z * 0.6})`;
+                const size = 1.4 + s.z * 1.6;
+                this.ctx.fillRect(s.x, s.y, size, size);
+            }
+        }
+        
+        animate() {
+            this.ctx.clearRect(0, 0, this.width, this.height);
+            
+            for (const s of this.stars) {
+                s.x += s.vx;
+                s.y += s.vy;
+                
+                if (s.x < 0 || s.x > this.width) s.vx *= -1;
+                if (s.y < 0 || s.y > this.height) s.vy *= -1;
+                
+                this.ctx.fillStyle = `rgba(255,255,255,${0.4 + s.z * 0.6})`;
+                const size = 1.4 + s.z * 1.6;
+                this.ctx.fillRect(s.x, s.y, size, size);
+            }
+            
+            this.animationId = requestAnimationFrame(() => this.animate());
+        }
+        
+        destroy() {
+            if (this.animationId) {
+                cancelAnimationFrame(this.animationId);
+                this.animationId = null;
+            }
+        }
+        
+        pause() {
+            this.destroy();
+        }
+        
+        resume() {
+            if (!prefersReducedMotion && !this.animationId) {
+                this.animate();
+            }
+        }
+    }
+    
+    const starField = new StarField(document.getElementById('starfield'));
+    window.addEventListener('resize', debounce(() => starField.resize(), 300), { passive: true });
+    
+    // 页面可见性变化：暂停/恢复动画
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            starField.pause();
+        } else {
+            starField.resume();
+        }
+    });
+    
+    perf.mark('星野背景初始化完成');
+
+    // 开始逛展（无内联处理）
+    $('#goPhotos').addEventListener('click', () => {
+        const target = document.querySelector('#photos');
+        if (target) {
+            target.scrollIntoView({ behavior: smoothBehavior });
+        }
+    });
+
+    // ===== 密语解锁 & 隐藏相册（安全增强版） =====
+    class SecretManager {
+        constructor() {
+            this.setupListeners();
+            // 从localStorage恢复解锁状态（仅存布尔值，不存密钥）
+            this.hiddenUnlocked = storage.get('secretUnlocked', false);
+            if (this.hiddenUnlocked && gallery) {
+                gallery.render();
+            }
+        }
+        
+        get hiddenUnlocked() {
+            return this._unlocked || false;
+        }
+        
+        set hiddenUnlocked(val) {
+            this._unlocked = !!val;
+            storage.set('secretUnlocked', this._unlocked);
+        }
+        
+        unlock() {
+            const input = $('#key');
+            if (!input) return;
+            
+            // 安全：使用.value，限制长度，清理
+            const value = sanitize.text(input.value.trim().toLowerCase());
+            const isValid = DATA.secretKeys.some(k => k.toLowerCase() === value);
+            
+            if (isValid) {
+                this.hiddenUnlocked = true;
+                if (gallery) gallery.render();
+                this.showToast(CONFIG.messages.unlockSuccess, 'success');
+                input.value = ''; // 清空输入
+            } else {
+                this.showToast(CONFIG.messages.unlockFail, 'info');
+            }
+        }
+        
+        setupListeners() {
+            const unlockBtn = $('#unlock');
+            const keyInput = $('#key');
+            
+            if (unlockBtn) {
+                unlockBtn.addEventListener('click', () => this.unlock());
+            }
+            
+            if (keyInput) {
+                keyInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.unlock();
+                    }
+                });
+            }
+            
+            // 连点 Z I X I A N 彩蛋
+            let keySequence = "";
+            let lastTap = 0;
+            window.addEventListener('keydown', (e) => {
+                const now = Date.now();
+                if (now - lastTap > 1000) keySequence = "";
+                lastTap = now;
+                
+                const ch = (e.key || '').toUpperCase();
+                keySequence += ch;
+                
+                if (keySequence.endsWith('ZIXIAN')) {
+                    this.hiddenUnlocked = true;
+                    if (gallery) gallery.render();
+                    this.showToast(CONFIG.messages.easterEgg, 'success');
+                }
+            });
+        }
+        
+        // 统一的轻通知（支持类型 + 进度条）
+        // 用法：this.showToast('提示语', 'success'|'info'|'error', 3000)
+        showToast(message, type = 'info', duration = 3000) {
+            const container = $('#toast-container');
+            if (!container) return;
+            
+            const toast = document.createElement('div');
+            toast.className = 'notification';
+            toast.setAttribute('role', 'status');
+            const bg = type === 'success' ? 'rgba(107, 207, 127, 0.95)'
+                    : type === 'error' ? 'rgba(248, 113, 113, 0.95)'
+                    : 'rgba(142, 197, 255, 0.95)';
+            toast.style.cssText = `
+                background:${bg};color:#0D1B2A;padding:14px 18px;border-radius:12px;
+                box-shadow:0 10px 30px rgba(0,0,0,.3);animation:slideIn .25s ease-out;
+                font-weight:700;max-width:360px;display:flex;gap:10px;align-items:center;position:relative;overflow:hidden;
+            `;
+
+            // 图标 + 文本
+            const icon = document.createElement('span');
+            icon.textContent = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+            const txt = document.createElement('span');
+            txt.textContent = sanitize.text(message);
+            toast.append(icon, txt);
+            
+            // 进度条（自动消失倒计时）
+            const progress = document.createElement('div');
+            progress.style.cssText = `position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.5);transform-origin:left;`;
+            toast.appendChild(progress);
+            container.appendChild(toast);
+            
+            if (progress.animate) {
+                progress.animate([{transform:'scaleX(1)'},{transform:'scaleX(0)'}], {duration, easing:'linear', fill:'forwards'});
+            }
+            const t = setTimeout(() => {
+                toast.style.animation = 'slideOut .25s ease-in';
+                setTimeout(() => toast.remove(), 260);
+                clearTimeout(t);
+            }, duration);
+        }
+
+        // 别名：兼容旧调用（如：showNotification）
+        showNotification(message, type = 'info', duration = 3000){
+            this.showToast(message, type, duration);
+        }
+    }
+    
+    const secretManager = new SecretManager();
+
+    // ===== 相册渲染（专业版重构） =====
+    const baseHidden = [
+        { src: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop", tag: "未公开", place: "家里沙发", time: "2024-06", say: "睡着了也在笑。" },
+        { src: "https://images.unsplash.com/photo-1513278974582-3e1b4a4fa21e?q=80&w=1400&auto=format&fit=crop", tag: "未公开", place: "夜宵摊", time: "2024-09", say: "谁规定夜深不能快乐。" }
+    ];
+    
+    class Gallery {
+        constructor() {
+            this.currentTag = null;
+            this.galleryList = [];
+            this.currentIndex = 0;
+            this.lightboxOpen = false;
+            this.setupKeyboardNav();
+        }
+        
+        getAllPhotos() {
+            let list = [...DATA.photos];
+            if (secretManager.hiddenUnlocked) {
+                list = list.concat(baseHidden);
+            }
+            return list;
+        }
+        
+        getTags() {
+            const photos = this.getAllPhotos();
+            const tags = new Set(photos.map(p => p.tag));
+            return Array.from(tags);
+        }
+        
+        renderFilters() {
+            const wrap = $('#filters');
+            if (!wrap) return;
+            
+            wrap.innerHTML = '';
+            const tags = this.getTags();
+            
+            const createTag = (tagName) => {
+                const el = document.createElement('button');
+                el.type = 'button';
+                el.className = 'tag';
+                el.textContent = tagName;
+                
+                const isActive = (!this.currentTag && tagName === '全部') || this.currentTag === tagName;
+                el.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                
+                el.addEventListener('click', () => {
+                    this.currentTag = (this.currentTag === tagName) ? null : (tagName === '全部' ? null : tagName);
+                    this.renderFilters();
+                    this.render();
+                });
+                
+                return el;
+            };
+            
+            wrap.appendChild(createTag('全部'));
+            tags.forEach(tag => wrap.appendChild(createTag(tag)));
+            wrap.appendChild(createTag('未公开'));
+        }
+        
+        render() {
+            const wrap = $('#gallery');
+            if (!wrap) return;
+            
+            wrap.innerHTML = '';
+            
+            let list = this.getAllPhotos();
+            if (this.currentTag && this.currentTag !== '全部') {
+                list = list.filter(p => p.tag === this.currentTag);
+            }
+            
+            this.galleryList = list;
+            
+            list.forEach((photo, idx) => {
+                const figure = document.createElement('figure');
+                figure.className = 'photo card';
+                figure.tabIndex = 0;
+                figure.setAttribute('role', 'button');
+                figure.setAttribute('aria-label', `${photo.place || ''} ${photo.time || ''}`.trim());
+                
+                const img = document.createElement('img');
+                img.alt = `${photo.place || ''} ${photo.time || ''}`.trim();
+                
+                // 直接设置图片源，不使用懒加载
+                const baseUrl = photo.src;
+                img.src = baseUrl;
+                
+                // 图片加载完成后确保可见
+                img.addEventListener('load', () => {
+                    img.style.opacity = '1';
+                }, { once: true });
+                
+                // 图片加载失败处理
+                img.addEventListener('error', () => {
+                    img.style.display = 'none';     // ✅ 不显示破图图标
+                }, { once: true });
+                
+                // 安全：使用 DOM 方法而非 innerHTML
+                const caption = document.createElement('figcaption');
+                const strong = document.createElement('strong');
+                strong.textContent = `${photo.place || ''} · ${photo.time || ''}`;
+                caption.appendChild(strong);
+                caption.appendChild(document.createElement('br'));
+                caption.appendChild(document.createTextNode(photo.say || ''));
+                
+                figure.appendChild(img);
+                figure.appendChild(caption);
+                wrap.appendChild(figure);
+                
+                const openLightbox = () => this.openLightbox(idx);
+                figure.addEventListener('click', openLightbox);
+                figure.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox();
+                    }
+                });
+            });
+        }
+        
+        openLightbox(idx) {
+            this.currentIndex = (idx + this.galleryList.length) % this.galleryList.length;
+            const photo = this.galleryList[this.currentIndex];
+            
+            const bigImg = $('#big');
+            const bigCap = $('#bigcap');
+            const lightbox = $('#lightbox');
+            
+            if (!bigImg || !lightbox) return;
+            
+            bigImg.src = photo.src;
+            bigImg.alt = `${photo.place || ''} ${photo.time || ''}`.trim();
+            
+            if (bigCap) {
+                bigCap.textContent = `${photo.place || ''} · ${photo.time || ''} — ${photo.say || ''}`;
+            }
+            
+            lightbox.classList.add('open');
+            this.lightboxOpen = true;
+            
+            const closeBtn = $('#closeLight');
+            if (closeBtn) closeBtn.focus();
+        }
+        
+        openLightboxCustom(src, caption) {
+            const bigImg = $('#big');
+            const bigCap = $('#bigcap');
+            const lightbox = $('#lightbox');
+            
+            if (!bigImg || !lightbox) return;
+            
+            bigImg.src = src;
+            bigImg.alt = caption || '放大照片';
+            
+            if (bigCap) {
+                bigCap.textContent = caption || '';
+            }
+            
+            lightbox.classList.add('open');
+            this.lightboxOpen = true;
+            
+            const closeBtn = $('#closeLight');
+            if (closeBtn) closeBtn.focus();
+        }
+        
+        closeLightbox() {
+            const lightbox = $('#lightbox');
+            if (lightbox) {
+                lightbox.classList.remove('open');
+                this.lightboxOpen = false;
+            }
+        }
+        
+        navigateLightbox(direction) {
+            if (!this.lightboxOpen || this.galleryList.length === 0) return;
+            
+            this.currentIndex = (this.currentIndex + direction + this.galleryList.length) % this.galleryList.length;
+            this.openLightbox(this.currentIndex);
+        }
+        
+        setupKeyboardNav() {
+            window.addEventListener('keydown', (e) => {
+                if (!this.lightboxOpen) return;
+                
+                switch (e.key) {
+                    case 'Escape':
+                        e.preventDefault();
+                        this.closeLightbox();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        this.navigateLightbox(-1);
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        this.navigateLightbox(1);
+                        break;
+                }
+            });
+            
+            // 设置lightbox事件
+            const closeBtn = $('#closeLight');
+            const prevBtn = $('#prevLight');
+            const nextBtn = $('#nextLight');
+            const lightbox = $('#lightbox');
+            
+            if (closeBtn) closeBtn.addEventListener('click', () => this.closeLightbox());
+            if (prevBtn) prevBtn.addEventListener('click', () => this.navigateLightbox(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => this.navigateLightbox(1));
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target.id === 'lightbox') this.closeLightbox();
+                });
+                // === 触屏手势：左右滑动切换（移动端体验增强） ===
+                if ('ontouchstart' in window) {
+                    let startX = 0, startY = 0;
+                    lightbox.addEventListener('touchstart', (e) => {
+                        const t = e.touches && e.touches[0];
+                        if (!t) return;
+                        startX = t.clientX; startY = t.clientY;
+                    }, { passive: true });
+                    lightbox.addEventListener('touchend', (e) => {
+                        if (!this.lightboxOpen) return;
+                        const t = e.changedTouches && e.changedTouches[0];
+                        if (!t) return;
+                        const dx = t.clientX - startX;
+                        const dy = t.clientY - startY;
+                        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+                            if (dx < 0) this.navigateLightbox(1); else this.navigateLightbox(-1);
+                        }
+                    }, { passive: true });
+                }
+            }
+        }
+    }
+    
+    const gallery = new Gallery();
+    gallery.renderFilters();
+    gallery.render();
+    
+    perf.mark('相册系统初始化完成');
+
+    // ===== 时间轴 =====
+    function renderTimeline(){
+        const lane=$('#lane'); lane.innerHTML='';
+        DATA.timeline.forEach(t=>{
+            const tc=document.createElement('div'); tc.className='tcard';
+            const face=document.createElement('div'); face.className='face'; face.tabIndex=0; face.setAttribute('role','button'); face.setAttribute('aria-pressed','false');
+            const front=document.createElement('div'); front.className='front'; front.innerHTML=`<div class="pill">${t.when}</div><h3 style="margin-top:8px">${t.front}</h3>`;
+            const back=document.createElement('div'); back.className='back'; back.innerHTML=`<h3>${t.when}</h3><p class="muted">${t.back}</p>`;
+            face.append(front,back); tc.append(face); lane.append(tc);
+            const toggle=()=>{ face.classList.toggle('flip'); face.setAttribute('aria-pressed', face.classList.contains('flip')?'true':'false'); };
+            face.addEventListener('click',toggle);
+            face.addEventListener('keydown',e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }});
+        })
+    }
+    renderTimeline();
+
+    // ===== 扭蛋券 =====
+    let lastCoupon=null;
+    $('#roll').addEventListener('click',()=>{
+        lastCoupon = DATA.coupons[rand(DATA.coupons.length)];
+        const win = sanitize.text(CONFIG.sections.gacha.winBanner);
+        const serial = sanitize.text(CONFIG.sections.gacha.serialLabel);
+        const rules = sanitize.text(CONFIG.sections.gacha.rules);
+        $('#coupon').innerHTML = `<div class="row"><div class="pill">${win}</div><div class="right pill">${serial} ${1000+rand(9000)}</div></div><h3>${lastCoupon.title}</h3><p class="muted">${lastCoupon.desc}</p><small class="muted">${rules}</small>`;
+        $('#saveCoupon').disabled=false;
+    })
+    $('#saveCoupon').addEventListener('click',()=>{
+        if(!lastCoupon) return;
+        const c=document.createElement('canvas'); c.width=900; c.height=500; const ctx=c.getContext('2d');
+        const g=ctx.createLinearGradient(0,0,900,500); g.addColorStop(0,'#2a3a55');g.addColorStop(1,'#0d1b2a'); ctx.fillStyle=g; ctx.fillRect(0,0,c.width,c.height);
+        ctx.strokeStyle='rgba(239,184,200,.6)'; ctx.setLineDash([16,10]); ctx.lineWidth=3; ctx.strokeRect(18,18,c.width-36,c.height-36);
+    ctx.font='700 42px system-ui'; ctx.fillStyle='#EFB8C8'; ctx.fillText(CONFIG.sections.gacha.brandEn, 40, 90);
+        ctx.font='700 64px system-ui'; ctx.fillStyle='#fff'; ctx.fillText(lastCoupon.title, 40, 180);
+    ctx.font='24px system-ui'; ctx.fillStyle='#cfe3ff'; wrapText(ctx,lastCoupon.desc,40,230,820,34);
+    ctx.font='16px system-ui'; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText(CONFIG.sections.gacha.rules,40,460);
+        c.toBlob(b=>downloadBlob(b,`coupon_${Date.now()}.png`));
+    })
+
+    function wrapText(ctx,text,x,y,maxWidth,lineHeight){
+        const words=text.split(' '); let line='';
+        for(let n=0;n<words.length;n++){
+            const test=line+words[n]+" "; const w=ctx.measureText(test).width;
+            if(w>maxWidth && n>0){ctx.fillText(line,x,y); line=words[n]+" "; y+=lineHeight}else{line=test}
+        }
+        ctx.fillText(line,x,y);
+    }
+
+    // ===== 小测 =====
+    function renderQuiz(){
+        const f=$('#quizForm'); f.innerHTML='';
+        DATA.quiz.forEach((item,idx)=>{
+            const q=document.createElement('div'); q.className='q';
+            q.innerHTML=`<div style="margin-bottom:6px"><strong>Q${idx+1}. ${item.q}</strong></div>`;
+            item.a.forEach((opt,i)=>{
+                const id=`q${idx}_${i}`;
+                const lab=document.createElement('label'); lab.style.display='flex'; lab.style.gap='8px'; lab.style.alignItems='center'; lab.style.cursor='pointer';
+                lab.innerHTML=`<input type="radio" name="q${idx}" value="${i}" aria-labelledby="${id}"> <span id="${id}">${opt}</span>`;
+                q.append(lab);
+            })
+            f.append(q);
+        })
+    }
+    renderQuiz();
+    $('#submitQuiz').addEventListener('click',()=>{
+        let correct=0; DATA.quiz.forEach((item,idx)=>{const v=fv(`q${idx}`); if(v!==null && +v===item.pick) correct++;});
+        const pct=Math.round(100*correct/DATA.quiz.length);
+        $('#score').textContent=pct+'%';
+        drawBadge(pct); $('#saveBadge').disabled=false;
+    })
+    function fv(name){const el=[...document.getElementsByName(name)].find(i=>i.checked);return el?el.value:null}
+    function drawBadge(pct){
+        const c=$('#badgeCanvas'); const ctx=c.getContext('2d'); c.classList.remove('hidden');
+        ctx.clearRect(0,0,c.width,c.height);
+        const g=ctx.createLinearGradient(0,0,c.width,0); g.addColorStop(0,'#0d1b2a'); g.addColorStop(1,'#2a3a55'); ctx.fillStyle=g; ctx.fillRect(0,0,c.width,c.height);
+    ctx.fillStyle='#EFB8C8'; ctx.font='700 40px system-ui'; ctx.fillText(CONFIG.sections.quiz.scoreLabel,40,70);
+        ctx.fillStyle='#fff'; ctx.font='900 120px system-ui'; ctx.fillText(pct+'%',40,190);
+    ctx.fillStyle='#cfe3ff'; ctx.font='24px system-ui'; ctx.fillText(CONFIG.sections.quiz.badgeFooter,40,240);
+        // 进度弧
+        const cx=420, cy=160, r=120; ctx.lineWidth=18; ctx.strokeStyle='rgba(255,255,255,.15)'; ctx.beginPath(); ctx.arc(cx,cy,r,Math.PI*0.75,Math.PI*2.25); ctx.stroke();
+        const end= Math.PI*0.75 + (Math.PI*1.5)*(pct/100);
+        ctx.strokeStyle='#EFB8C8'; ctx.beginPath(); ctx.arc(cx,cy,r,Math.PI*0.75,end); ctx.stroke();
+    }
+    $('#saveBadge').addEventListener('click',()=>$('#badgeCanvas').toBlob(b=>downloadBlob(b,`badge_${Date.now()}.png`)));
+
+    // ===== 拼图（NxN 滑块 - 升级版：可解保证、动画、计时、手势） =====
+    class PuzzleGame{
+        constructor(){
+            this.size = (CONFIG.puzzle?.defaultSize)||3;
+            this.stage = $('#puzzleStage');
+            this.imageUrl = DATA.puzzleImg;
+            this.tiles=[]; this.emptyIndex=-1; this.moves=0; this.t0=0; this.timer=null; this.isSolved=false;
+            if(this.stage){ this.setupHUD(); this.build(); this.shuffle(true); this.bindControls(); }
+        }
+        setupHUD(){
+            // 在右侧卡片加计时/步数与尺寸切换
+            const card = document.querySelector('#puzzle + .section .container .row .card') || document.querySelector('#puzzle .card');
+            if(!card) return;
+            const hud = document.createElement('div'); hud.className='row'; hud.style.marginTop='8px'; hud.style.display='flex'; hud.style.gap='8px'; hud.style.flexWrap='wrap';
+            hud.innerHTML = `
+              <div class="pill">用时：<span id="pzTime">00:00</span></div>
+              <div class="pill">步数：<span id="pzMoves">0</span></div>
+              <select id="pzSize" class="pill" style="background:transparent;border-color:rgba(255,255,255,.16);cursor:pointer">
+                ${ (CONFIG.puzzle?.sizeOptions||[3,4]).map(n=>`<option value="${n}" ${n===this.size?'selected':''}>${n}×${n}</option>`).join('') }
+              </select>
+              <button class="btn ghost" id="pzGhost">${CONFIG.puzzle?.showGhost?'隐藏底图':'显示底图'}</button>
+            `;
+            card.appendChild(hud);
+            $('#pzSize').addEventListener('change',e=>{ this.size=+e.target.value; this.build(); this.shuffle(true); });
+            $('#pzGhost').addEventListener('click',()=>{ this.stage.classList.toggle('ghost'); $('#pzGhost').textContent=this.stage.classList.contains('ghost')?'隐藏底图':'显示底图'; });
+            if(CONFIG.puzzle?.showGhost) this.stage.classList.add('ghost');
+        }
+        position(i){ const x=i%this.size, y=(i/this.size|0); return {x, y}; }
+        index(x,y){ return y*this.size + x; }
+        build(){
+            this.stage.innerHTML=''; this.tiles=[];
+            const N=this.size*this.size; const bg=this.imageUrl;
+            this.stage.style.setProperty('--n', this.size);
+            // 背景图（幽灵）
+            this.stage.style.backgroundImage = `url(${bg})`;
+            this.stage.style.backgroundSize = '100% 100%';
+
+            for(let i=0;i<N-1;i++){
+                const d=this.position(i);
+                const t=document.createElement('div'); t.className='tile';
+                t.dataset.correct=i; t.dataset.pos=i;
+                // 使用 transform，不用 left/top 布局
+                t.style.transform = `translate(${(d.x*100)}%, ${(d.y*100)}%)`;
+                t.style.width = (100/this.size)+'%'; t.style.height=(100/this.size)+'%';
+                t.style.backgroundImage=`url(${bg})`;
+                t.style.backgroundSize=`${this.size*100}% ${this.size*100}%`;
+                t.style.backgroundPosition=`${(-d.x*100/(this.size-1))}% ${(-d.y*100/(this.size-1))}%`;
+                t.addEventListener('click',()=>this.tryMove(+t.dataset.pos));
+                this.stage.appendChild(t); this.tiles.push(t);
+            }
+            this.emptyIndex = N-1; this.moves=0; this.updateHUD(); this.isSolved=false;
+        }
+        updateHUD(){
+            const sec=Math.floor((performance.now()-this.t0)/1000)|0;
+            const m=String(sec/60|0).padStart(2,'0'), s=String(sec%60).padStart(2,'0');
+            const timeEl=$('#pzTime'); if(timeEl) timeEl.textContent=`${m}:${s}`; 
+            const movesEl=$('#pzMoves'); if(movesEl) movesEl.textContent=String(this.moves);
+        }
+        startTimer(){
+            this.t0=performance.now(); clearInterval(this.timer);
+            this.timer=setInterval(()=>this.updateHUD(), 500);
+        }
+        stopTimer(){ clearInterval(this.timer); }
+        canMove(i){
+            const a=this.position(i), b=this.position(this.emptyIndex);
+            return (a.x===b.x && Math.abs(a.y-b.y)===1) || (a.y===b.y && Math.abs(a.x-b.x)===1);
+        }
+        moveTile(i, silent=false){
+            const t=this.tiles.find(x=>+x.dataset.pos===i); if(!t) return false;
+            const to=this.position(this.emptyIndex);
+            t.dataset.pos=this.emptyIndex;
+            t.style.transform = `translate(${(to.x*100)}%, ${(to.y*100)}%)`;
+            this.emptyIndex=i; if(!silent) this.afterMove(); return true;
+        }
+        afterMove(){
+            this.moves++; this.updateHUD();
+            if(this.tiles.every(x=>+x.dataset.pos===+x.dataset.correct) && this.emptyIndex===this.size*this.size-1){
+                if(this.isSolved) return; this.isSolved=true; this.stopTimer();
+                const bestKey=`pz_best_${this.size}`; const sec=(performance.now()-this.t0)/1000;
+                const best=+localStorage.getItem(bestKey) || Infinity;
+                if(sec<best) localStorage.setItem(bestKey, String(Math.floor(sec)));
+                secretManager.showNotification(`拼图完成 🎉 最佳纪录：${Math.min(best, Math.floor(sec))} 秒`, 'success');
+                const revealBtn=$('#reveal'); if(revealBtn){ revealBtn.textContent='已完成 ✔'; revealBtn.disabled=true; }
+                if (DATA.surpriseAudio){ const audio=$('#surprise'); if(audio){ try{ audio.src=DATA.surpriseAudio; audio.play(); }catch{} } }
+            }
+        }
+        randomPermutation(){
+            const N=this.size*this.size; const arr=[...Array(N).keys()];
+            // Fisher–Yates 洗牌
+            for(let i=N-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+            // 让空白在尾部
+            const ix=arr.indexOf(N-1); [arr[ix],arr[N-1]]=[arr[N-1],arr[ix]];
+            // 保证可解
+            if(!this.isSolvable(arr)) {
+                // 交换任意两个非空 tile 修正奇偶
+                [arr[0], arr[1]] = [arr[1], arr[0]];
+            }
+            return arr;
+        }
+        isSolvable(arr){
+            // arr 为 0..N-1 的排列，其中 N-1 代表空白
+            const N=this.size*this.size, blankRowFromBottom=this.size - (Math.floor(arr.indexOf(N-1)/this.size));
+            let inv=0;
+            for(let i=0;i<N-1;i++)for(let j=i+1;j<N-1;j++) if(arr[i]>arr[j]) inv++;
+            if(this.size%2===1) return inv%2===0; // 奇数阶：逆序数偶
+            // 偶数阶：空白自底起行数奇偶 + 逆序数奇偶 == 1
+            return ((blankRowFromBottom%2===0) === (inv%2===1));
+        }
+        shuffle(start=false){
+            const perm=this.randomPermutation(); // perm[i]= tileIndex 或 N-1(空)
+            // 放置
+            const N=this.size*this.size;
+            for(let i=0;i<N;i++){
+                if(perm[i]===N-1){ this.emptyIndex=i; continue; }
+                const tile=this.tiles.find(t=>+t.dataset.correct===perm[i]);
+                tile.dataset.pos=i;
+                const d=this.position(i);
+                tile.style.transform=`translate(${(d.x*100)}%, ${(d.y*100)}%)`;
+            }
+            this.moves=0; this.updateHUD(); this.isSolved=false;
+            if(start){ this.startTimer(); const revealBtn=$('#reveal'); if(revealBtn){ revealBtn.textContent='看原图'; revealBtn.disabled=false; } }
+        }
+        tryMove(i){ if(!this.canMove(i)) return; this.moveTile(i); }
+        bindControls(){
+            // Shuffle & Reveal 保持
+            $('#shuffle')?.addEventListener('click',()=>{ this.build(); setTimeout(()=>this.shuffle(true),0); });
+            $('#reveal')?.addEventListener('click',()=>{ gallery.openLightboxCustom(this.imageUrl,'拼图原图'); });
+
+            // 键盘
+            window.addEventListener('keydown',(e)=>{
+                const b=this.position(this.emptyIndex); let n=null;
+                if(e.key==='ArrowUp') n=this.index(b.x, b.y+1);
+                else if(e.key==='ArrowDown') n=this.index(b.x, b.y-1);
+                else if(e.key==='ArrowLeft') n=this.index(b.x+1, b.y);
+                else if(e.key==='ArrowRight') n=this.index(b.x-1, b.y);
+                if(n!=null && n>=0 && n<this.size*this.size) { e.preventDefault(); this.tryMove(n); }
+            });
+
+            // 触摸划动
+            if('ontouchstart' in window){
+                let sx=0,sy=0;
+                this.stage.addEventListener('touchstart',e=>{ const t=e.touches[0]; sx=t.clientX; sy=t.clientY; }, {passive:true});
+                this.stage.addEventListener('touchend',e=>{
+                    const t=e.changedTouches[0]; const dx=t.clientX-sx, dy=t.clientY-sy;
+                    if(Math.abs(dx)<30 && Math.abs(dy)<30) return;
+                    const b=this.position(this.emptyIndex); let n=null;
+                    if(Math.abs(dx)>Math.abs(dy)) n = dx>0? this.index(b.x-1,b.y) : this.index(b.x+1,b.y);
+                    else n = dy>0? this.index(b.x,b.y-1) : this.index(b.x,b.y+1);
+                    if(n!=null) this.tryMove(n);
+                }, {passive:true});
+            }
+        }
+    }
+    
+    const puzzleGame = new PuzzleGame();
+    
+    perf.mark('拼图系统初始化完成');
+
+    // ===== v3.2 - Config-driven & Global Effects =====
+    class GlobalFX {
+        constructor(){
+            this.overlay = document.getElementById('fxOverlay');
+            this.barrageEl = document.getElementById('fxBarrage');
+            this.canvas = document.getElementById('fxFireworks');
+            this.ctx = this.canvas ? this.canvas.getContext('2d', { alpha: true }) : null;
+            this.particles = [];
+            this.animationId = null;
+            this.timers = [];
+            if (this.canvas && this.ctx){
+                this.resize();
+                window.addEventListener('resize', debounce(()=>this.resize()), {passive:true});
+                if (!prefersReducedMotion) this.startParticleLoop();
+            }
+            this.startAutoLoops();
+        }
+        resize(){ if (this.canvas && this.ctx) scaleCanvas(this.canvas, this.ctx); }
+        startParticleLoop(){
+            const tick = ()=>{
+                const w = this.canvas.clientWidth || 300;
+                const h = this.canvas.clientHeight || 300;
+                this.ctx.clearRect(0,0,w,h);
+                this.particles.forEach(p=>{
+                    p.x += p.vx; p.y += p.vy; p.vx *= 0.985; p.vy = p.vy*0.985 + 0.06; p.life--;
+                    this.ctx.fillStyle = p.color; this.ctx.fillRect(p.x,p.y,2,2);
+                });
+                // 生命期与总量控制，避免极端情况下粒子无限增长导致内存膨胀
+                this.particles = this.particles.filter(p=>p.life>0);
+                if (this.particles.length > 2200) {
+                    this.particles = this.particles.slice(-1800);
+                }
+                this.animationId = requestAnimationFrame(tick);
+            }; tick();
+        }
+        firework(x,y){
+            if (this.particles.length > 2000) return; // 背压：粒子过多时跳过新一轮烟花
+            for(let i=0;i<60;i++){
+                const a=(i/60)*2*Math.PI;
+                this.particles.push({x,y,vx:Math.cos(a)*(2+Math.random()*3),vy:Math.sin(a)*(2+Math.random()*3),life:50+rand(30),color:`hsl(${rand(360)},90%,70%)`});
+            }
+        }
+        popConfetti(x,y){
+            if (this.particles.length > 2000) return; // 背压：粒子过多时跳过纸屑
+            for(let i=0;i<36;i++){
+                const a=(i/36)*2*Math.PI;
+                this.particles.push({x,y,vx:Math.cos(a)*(1+Math.random()*2),vy:Math.sin(a)*(1+Math.random()*2),life:40+rand(20),color:`hsl(${rand(360)},90%,70%)`});
+            }
+        }
+        spawnBalloon(){
+            if (!this.overlay || !CONFIG.effects.balloons?.enabled) return;
+            // 性能控制：限制同屏气球数
+            if (!this.activeBalloons) this.activeBalloons = 0;
+            const maxBalloons = CONFIG.effects.performance?.maxBalloons || 24;
+            if (this.activeBalloons >= maxBalloons) return;
+            
+            const texts = CONFIG.effects.balloons.texts?.length? CONFIG.effects.balloons.texts : DEFAULT_WISHES;
+            const colors = CONFIG.effects.balloons.colors;
+            const el = document.createElement('div'); el.className='balloon';
+            
+            // 形状：round | heart | mix
+            const shape = CONFIG.effects.balloons.shape || 'round';
+            if (shape==='heart' || (shape==='mix' && Math.random()<0.5)) el.classList.add('heart');
+
+            // 颜色/位置
+            const pair = colors[rand(colors.length)]; 
+            el.style.setProperty('--balloon-color', pair[0]); 
+            el.style.setProperty('--balloon-dark', pair[1]);
+            const w = this.overlay.clientWidth || window.innerWidth; 
+            const x = 20 + Math.random()*Math.max(100, w-100); 
+            el.style.left = x+'px';
+            el.style.setProperty('--drift', ((Math.random()-0.5)*120)+'px'); 
+            el.style.setProperty('--rotate', ((Math.random()-0.5)*12)+'deg');
+            
+            // 景深模糊
+            const [minBlur,maxBlur]=CONFIG.effects.balloons.depthBlur||[0,1.5];
+            el.style.filter = `blur(${(minBlur+Math.random()*(maxBlur-minBlur)).toFixed(1)}px) drop-shadow(0 10px 18px rgba(0,0,0,.35))`;
+
+            // 结构：主体/绳/文案；心形需要一个内部 <i> 作为心尖
+            const b=document.createElement('div'); b.className='b';
+            if (el.classList.contains('heart')) b.appendChild(document.createElement('i'));
+            const s=document.createElement('div'); s.className='s';
+            const t=document.createElement('small'); t.textContent = texts[rand(texts.length)];
+            el.append(b,s,t); this.overlay.appendChild(el); this.activeBalloons++;
+
+            const [minS,maxS]=CONFIG.effects.balloons.speedSecRange||[7,12]; 
+            const dur = minS + Math.random()*(maxS-minS); 
+            el.style.animation=`floatUp ${dur}s ease-out forwards`;
+
+            el.addEventListener('click',()=>{ 
+                const r=el.getBoundingClientRect(); 
+                this.popConfetti(r.left+r.width/2, r.top+r.height/2); 
+                el.remove(); 
+                this.activeBalloons--; 
+            },{once:true});
+            
+            setTimeout(()=>{ 
+                if (el.parentNode) el.remove(); 
+                this.activeBalloons--; 
+            }, dur*1000 + 500);
+        }
+        spawnBarrage(text){
+            if (!this.barrageEl || !CONFIG.effects.barrage.enabled) return;
+            const list = CONFIG.effects.barrage.messages||[]; const msg = sanitize.text(text || (list.length? list[rand(list.length)]: DEFAULT_WISHES[rand(DEFAULT_WISHES.length)]));
+            const dir = Math.random()<0.5?'left':'right'; const el=document.createElement('div'); el.className='msg'; el.textContent=msg; this.barrageEl.appendChild(el);
+            const stageW=this.barrageEl.clientWidth||window.innerWidth; const stageH=this.barrageEl.clientHeight||window.innerHeight; const y=30+Math.random()*Math.max(50, stageH-80); el.style.top=y+'px';
+            const [minMs,maxMs]=CONFIG.effects.barrage.speedMsRange||[5000,9000]; const duration=minMs+Math.random()*(maxMs-minMs); const start=performance.now();
+            let startX,endX; if (dir==='left'){ startX=stageW+20; endX=-(el.offsetWidth+40);} else { startX=-(el.offsetWidth+40); endX=stageW+20; } el.style.left=startX+'px';
+            let sparked=false; const step=(now)=>{ const p=Math.min(1,(now-start)/duration); const x=startX+(endX-startX)*p; el.style.left=x+'px'; if(!sparked && p>0.45 && p<0.48){ sparked=true; this.firework(Math.max(20, Math.min(stageW-20, x + el.offsetWidth*0.5)), y); }
+                if(p<1) requestAnimationFrame(step); else el.remove(); }; requestAnimationFrame(step);
+        }
+        startAutoLoops(){ if (prefersReducedMotion) return; 
+            const bd = Math.max(1, CONFIG.effects.balloons.densityPerMinute||0); const bi = Math.max(500, 60000/bd);
+            const td = Math.max(1, CONFIG.effects.barrage.densityPerMinute||0); const ti = Math.max(400, 60000/td);
+            const balloonTick=()=>{ if(!document.hidden) this.spawnBalloon(); this.timers.push(setTimeout(balloonTick, bi*(0.8+Math.random()*0.4))); };
+            const barrageTick=()=>{ if(!document.hidden) this.spawnBarrage(); this.timers.push(setTimeout(barrageTick, ti*(0.8+Math.random()*0.4))); };
+            setTimeout(balloonTick, 1200); setTimeout(barrageTick, 1600);
+        }
+        pause(){ if (this.animationId){ cancelAnimationFrame(this.animationId); this.animationId=null; } }
+        resume(){ if (!this.animationId && !prefersReducedMotion) this.startParticleLoop(); }
+    }
+    const globalFX = new GlobalFX();
+    
+    // ===== Resize Guard（缩放/尺寸剧烈变化时，临时降载） =====
+    (function setupResizeGuard(){
+        let timer=null, active=false; const html=document.documentElement;
+        const kick=()=>{
+            if(!active){
+                active=true; html.classList.add('resizing');
+                try{ starField.pause(); }catch{}
+                try{ globalFX.pause(); }catch{}
+            }
+            clearTimeout(timer);
+            timer=setTimeout(()=>{
+                active=false; html.classList.remove('resizing');
+                try{ starField.resume(); }catch{}
+                try{ globalFX.resume(); }catch{}
+            }, 450);
+        };
+        window.addEventListener('resize', kick, {passive:true});
+        window.addEventListener('wheel', (e)=>{ if(e.ctrlKey) kick(); }, {passive:true}); // Ctrl+滚轮=缩放
+    })();
+    // 页面可见性变化：暂停/恢复
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) { globalFX.pause(); } else { globalFX.resume(); }
+    });
+    // ===== 承诺书 | 签名 | 纪念卡 =====
+    const sig = $('#sig'); const sg = sig.getContext('2d');
+    function resizeSig(){ scaleCanvas(sig, sg); }
+    window.addEventListener('resize', debounce(resizeSig), {passive:true}); resizeSig();
+    
+    // 签名绘制状态
+    let drawing = false;
+    let last = {x: 0, y: 0};
+
+    // ===== 签名事件处理 =====
+    function rel(e){const r=sig.getBoundingClientRect(); const t=e.touches? e.touches[0]: e; return {x:t.clientX-r.left, y:t.clientY-r.top}}
+    const begin = e=>{drawing=true; last=rel(e)}; const end=()=>drawing=false; const move=e=>{if(!drawing) return; const p=rel(e); sg.strokeStyle='#fff'; sg.lineWidth=2; sg.lineCap='round'; sg.beginPath(); sg.moveTo(last.x,last.y); sg.lineTo(p.x,p.y); sg.stroke(); last=p}
+    sig.addEventListener('mousedown',begin); sig.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
+    sig.addEventListener('touchstart',begin,{passive:true}); sig.addEventListener('touchmove',move,{passive:true}); sig.addEventListener('touchend',end);
+    $('#clearSig').addEventListener('click',()=>sg.clearRect(0,0,sig.width,sig.height));
+
+    function drawPoster(){
+        const c=$('#poster'); const ctx=c.getContext('2d'); ctx.clearRect(0,0,c.width,c.height);
+        const M=60; const W=c.width-2*M;
+        // 背景
+        const g=ctx.createLinearGradient(0,0,0,c.height); g.addColorStop(0,'#0d1b2a'); g.addColorStop(1,'#2a3a55'); ctx.fillStyle=g; ctx.fillRect(0,0,c.width,c.height);
+        // 外框
+        ctx.strokeStyle='rgba(255,255,255,.25)'; ctx.lineWidth=2; roundRect(ctx, M-10, M-10, c.width-2*(M-10), c.height-2*(M-10), 24); ctx.stroke();
+        // 标题
+        ctx.fillStyle='#EFB8C8'; ctx.font='900 64px system-ui'; ctx.fillText('Happy Orbit, Zixian', M, M+70);
+        ctx.fillStyle='#cfe3ff'; ctx.font='24px system-ui'; ctx.fillText(new Date().toLocaleDateString(), M, M+110);
+        // 文案容器
+        const boxY = M+140; const boxH = c.height - boxY - (M+240);
+        ctx.fillStyle='rgba(255,255,255,.05)'; roundRect(ctx, M, boxY, W, boxH, 18); ctx.fill();
+        // 安全：使用.value（已清理）
+        const pledgeEl = $('#pledge');
+        const text = pledgeEl ? sanitize.text(pledgeEl.value) : '';
+        ctx.fillStyle='#fff'; ctx.font='28px system-ui';
+        const lines = wrapMixedText(ctx, text, W-40); const lh=40; let y=boxY+40;
+        for(const l of lines){ if(y>boxY+boxH- lh) break; ctx.fillText(l, M+20, y); y+=lh; }
+        // 签名区标题
+        ctx.fillStyle='#cfe3ff'; ctx.font='20px system-ui'; const sigTitleY = Math.min(y+20, c.height - M - 180); ctx.fillText('签名', M, sigTitleY);
+        // 签名贴图
+        const sigY = Math.min(sigTitleY+14, c.height - M - 160);
+        ctx.drawImage(sig, M, sigY, Math.min(420, W*0.6), 140);
+        // 装饰星点
+        for(let i=0;i<90;i++){ctx.fillStyle=`hsla(${rand(360)},100%,80%,.8)`; ctx.fillRect(M+rand(W), (c.height-M-280)+rand(240), 2, 2)}
+    }
+    function wrapMixedText(ctx, text, maxWidth){
+        const out=[]; const paras = (text||'').split('\n');
+        for(const par of paras){
+            if(par.trim()===''){ out.push(''); continue; }
+            let line='';
+            for(let i=0;i<par.length;i++){
+                const ch=par[i]; const test=line+ch; if(ctx.measureText(test).width>maxWidth && line!==''){ out.push(line); line=ch; } else { line=test; }
+            }
+            out.push(line);
+        }
+        return out;
+    }
+    function roundRect(ctx, x, y, w, h, r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+    $('#savePoster').addEventListener('click',()=>{
+        drawPoster(); $('#poster').toBlob(b=>downloadBlob(b,`zixian_poster_${Date.now()}.png`))
+    })
+
+    // ===== 杂项 & 最终初始化 =====
+    // 1) Web Share 分享按钮（可选）
+    // - 如需关闭，删除或注释调用 setupSharingButton()
+    function setupSharingButton(){
+        if (!navigator.share) return; // 仅在支持设备上显示
+        const navInner = document.querySelector('.nav-inner');
+        if (!navInner) return;
+        const btn = document.createElement('button');
+        btn.className = 'btn ghost';
+        btn.type = 'button';
+        btn.textContent = '分享';
+        btn.title = '调用系统分享面板';
+        btn.addEventListener('click', async ()=>{
+            try{
+                await navigator.share({
+                    title: document.title,
+                    text: '一起来看子茜的生日星河展览吧！',
+                    url: location.href
+                });
+            }catch(err){
+                console.log('分享取消/失败：', err?.message || err);
+            }
+        });
+        navInner.appendChild(btn);
+    }
+    setupSharingButton();
+
+    // 2) 背景音乐（可选）：
+    // - 在 DATA.bgm 设置为你的音乐地址（支持本地相对路径或 CSP 放行的 https 域）；
+    // - 若留空则不显示 BGM 切换按钮；
+    function setupBackgroundMusic(){
+        try{
+            if (!DATA.bgm) return; // 未配置则跳过
+            const navInner = document.querySelector('.nav-inner');
+            if (!navInner) return;
+            const audio = document.createElement('audio');
+            audio.id = 'bgm';
+            audio.loop = true;
+            audio.preload = 'none';
+            audio.src = DATA.bgm;
+            document.body.appendChild(audio);
+            const toggle = document.createElement('button');
+            toggle.className = 'pill';
+            toggle.type = 'button';
+            toggle.style.marginLeft = '8px';
+            toggle.textContent = '🔇';
+            let playing = false;
+            toggle.addEventListener('click', async ()=>{
+                try{
+                    if (!playing){
+                        await audio.play();
+                        toggle.textContent = '🎵';
+                    }else{
+                        audio.pause();
+                        toggle.textContent = '🔇';
+                    }
+                    playing = !playing;
+                }catch(err){
+                    secretManager.showToast(CONFIG.messages.autoplayBlocked, 'info');
+                }
+            });
+            navInner.appendChild(toggle);
+        }catch(err){
+            console.log('BGM 初始化失败：', err);
+        }
+    }
+    setupBackgroundMusic();
+
+    // 3) Section 滚动出现动画（尊重“减少动效”偏好）
+    (function setupSectionReveal(){
+        if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(sec => sec.classList.add('reveal-pending'));
+        const io = new IntersectionObserver((entries)=>{
+            entries.forEach(en=>{
+                if (en.isIntersecting){
+                    en.target.classList.remove('reveal-pending');
+                    en.target.classList.add('in-view');
+                    io.unobserve(en.target);
+                }
+            })
+        }, { threshold: 0.12 });
+        sections.forEach(sec => io.observe(sec));
+    })();
+
+    // 4) Service Worker 注册（离线缓存，可选）
+    // - 如需关闭，注释下面一段注册代码；
+    // - sw.js 位于站点根目录；在 GitHub Pages/静态托管下，确保路径正确。
+    if ('serviceWorker' in navigator){
+        window.addEventListener('load', ()=>{
+            navigator.serviceWorker.register('sw.js').then(reg=>{
+                console.log('ServiceWorker 注册成功，作用域：', reg.scope);
+            }).catch(err=>{
+                console.log('ServiceWorker 注册失败：', err);
+            });
+        });
+    }
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // 可访问性：Esc关闭查看器
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const lightbox = $('#lightbox');
+            if (lightbox) lightbox.classList.remove('open');
+        }
+    });
+    
+    // 错误处理：全局捕获
+    window.addEventListener('error', (e) => {
+        console.error('❌ 错误:', e.message, '@', e.filename, ':', e.lineno);
+        if (secretManager) {
+            secretManager.showToast(CONFIG.messages.genericIssue, 'info');
+        }
+    });
+    
+    window.addEventListener('unhandledrejection', (e) => {
+        console.error('❌ Promise 拒绝:', e.reason);
+    });
+    
+    // 性能报告
+    perf.mark('页面初始化完成');
+    console.log('✨ v3.1 所有系统就绪（Security & Performance Enhanced）');
+    console.log('📊 性能:', {
+        耗时: `${(performance.now() - perf.start).toFixed(2)}ms`,
+        绕日: orbitsSince('2001-06-18'),
+        照片: DATA.photos.length,
+        事件: DATA.timeline.length
+    });
+    
+    // 特性检测
+    if (navigator.share) console.log('✅ Web Share');
+    if ('serviceWorker' in navigator) console.log('✅ Service Worker');
+
+    </script>
+    
+    <!-- SEO: Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "子茜的星河生日展",
+        "description": "互动生日网页：相册、时间轴、扭蛋、拼图、烟花",
+        "inLanguage": "zh-CN"
+    }
+    </script>
+</body>
+</html>
