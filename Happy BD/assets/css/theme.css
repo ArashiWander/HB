@@ -1,0 +1,41 @@
+:root {
+  --bg-deep: #0D1B2A;
+  --bg-deeper: #08111d;
+  --ink: #E6E6FA;
+  --rose: #EFB8C8;
+  --mint: #b7ffe1;
+  --accent: #8ec5ff;
+  --card: #12243b;
+  --muted: #9aa7b2;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --glass: rgba(255, 255, 255, 0.06);
+}
+
+.bd-root[data-theme='sweet'] {
+  --bg-deep: #201128;
+  --bg-deeper: #170c1f;
+  --ink: #FFF6FB;
+  --rose: #FFB7D5;
+  --mint: #C1FFE7;
+  --accent: #A8C8FF;
+  --card: #281536;
+  --muted: #D6CFE2;
+  --glass: rgba(255, 255, 255, 0.08);
+}
+
+.bd-root[data-theme='sweet'] .btn {
+  background: linear-gradient(135deg, #FFB7D5, #FFE4EF 60%, #FFF8FB);
+  color: #5b2236;
+  box-shadow: 0 8px 20px rgba(255, 183, 213, 0.35);
+}
+
+.bd-root[data-theme='sweet'] .pill {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.bd-root[data-theme='sweet'] .card {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
