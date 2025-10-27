@@ -60,7 +60,9 @@ class PuzzleGame {
       this.stage.classList.toggle('ghost');
       const enabled = this.stage.classList.contains('ghost');
       this.stage.style.backgroundImage = enabled ? `url(${this.imageUrl})` : 'none';
-      this.ghostBtn.textContent = enabled ? '隐藏底图' : '显示底图';
+      this.ghostBtn.textContent = enabled
+        ? this.config.messages?.hideGhostImage || '隐藏底图'
+        : this.config.messages?.showGhostImage || '显示底图';
     });
   }
 
